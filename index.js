@@ -2,12 +2,12 @@
 
 var app = require('./app');
 
-var port = 3700;
+var port = process.env.PORT || 3000;
 //ESTO ES PARA CONECTARNOS A MONGOOSE POR MEDIO DE LAS PROMESAS
 // mongoose.Promise = global.Promise;
 // mongoose.set('useFindAndModify',false);
 
-app.listen(port,()=>{
+app.listen(port,'0.0.0.0',()=>{
     console.log(port)
     console.log('El puerto de 3700, ya esta listo..');
 })

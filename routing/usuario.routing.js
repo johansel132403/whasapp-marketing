@@ -19,6 +19,7 @@ var controller = require('../controllers/usuario.controller');
     routing.get('/home',controller.Home);
     routing.get('/get',controller.usuario);
     routing.post('/createtemplate',controller.crateTemplate);
+    routing.get('/webhook',controller.receiveMessage)
     
     
 

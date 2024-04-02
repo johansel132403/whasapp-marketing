@@ -137,7 +137,11 @@ let controllers  = {
 
 
       receiveMessage: function( req, res ){
-        
+
+        res.status(200).send(
+            {"hola":"yes"}
+         )
+
       }
 
 
