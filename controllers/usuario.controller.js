@@ -145,7 +145,7 @@ let controllers  = {
        let hub_challenge = '';
 
 
-       
+       console.log('entro')
 
        try {
          if(req.query['hub.mode'] == 'subscribe' && req.query['hub.verify_token'] == token){
@@ -160,8 +160,11 @@ let controllers  = {
       },
 
       receivPosteMessage: function( req, res){
-
+        console.log('si entro')
         console.log('Incoming webhook: ' + JSON.stringify(req.body));
+        return res.status(200).send(
+            JSON.stringify(req.body)
+        )
       }
 
 
