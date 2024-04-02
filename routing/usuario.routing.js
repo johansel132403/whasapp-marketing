@@ -20,7 +20,7 @@ var controller = require('../controllers/usuario.controller');
     routing.get('/get',controller.usuario);
     routing.post('/createtemplate',controller.crateTemplate);
     routing.get('/webhook',controller.receiveMessage)
-    routing.post('/webhook',controller.receiveMessage)
+    routing.post('/webhook',controller.receivPosteMessage)
     
     
 
