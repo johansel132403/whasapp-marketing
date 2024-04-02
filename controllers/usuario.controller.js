@@ -161,7 +161,7 @@ let controllers  = {
 
       receivPosteMessage: function( req, res){
         console.log('si entro')
-        console.log('Incoming webhook: ' + JSON.stringify(req.body));
+        console.log('Incoming webhook: ' + JSON.stringify(req));
         return res.status(200).send(
             JSON.stringify(req.body)
         )
