@@ -1,4 +1,4 @@
-const { response } = require("../app");
+
 
 const request = require('request');
 
@@ -138,7 +138,7 @@ let controllers  = {
 
       receiveMessage: function( req, res ){
 
-        res.status(200).send(
+       return  res.status(200).send(
             {"hola":"yes"}
          )
 
