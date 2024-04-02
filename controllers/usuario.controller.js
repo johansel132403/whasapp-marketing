@@ -148,7 +148,7 @@ let controllers  = {
        console.log(req.body)
 
        try {
-           return   res.stauts(200).send({
+           return   res.status(200).send({
               response
              })
         
