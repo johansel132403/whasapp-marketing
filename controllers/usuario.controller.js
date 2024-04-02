@@ -138,10 +138,23 @@ let controllers  = {
 
       receiveMessage: function( req, res ){
 
-       return  res.status(200).send(
-            {"hola":"yes"}
-         )
+       let token = "odontoarte24_happy_small"
 
+       let hub_mode  = '';
+       let hub_verify_token = '';
+       let hub_challenge = '';
+
+
+       console.log(req.body)
+
+       try {
+           return   res.stauts(200).send({
+              response
+             })
+        
+       } catch (error) {
+           console.log(error)
+       }
       }
 
 
