@@ -145,16 +145,23 @@ let controllers  = {
        let hub_challenge = '';
 
 
-       console.log(req.body)
+       
 
        try {
-           return   res.status(200).send({
-              response
-             })
+         if(req.query['hub.mode'] == 'subscribe' && req.query['hub.verify_token'] == token){
+            res.send(req.query['hub.challenge']);
+         }else{
+            res.status(400).send("error")
+         }
         
        } catch (error) {
            console.log(error)
        }
+      },
+
+      receivPosteMessage: function( req, res){
+
+        console.log('Incoming webhook: ' + JSON.stringify(req.body));
       }
 
 
