@@ -161,11 +161,12 @@ let controllers  = {
 
       receivPosteMessage: function( io,req, res){
         console.log('si entro')
-        console.log('io',io)
+        // console.log('io',io)
 
         // console.log('Incoming webhook: ' + JSON.stringify(req.body));
 
         io.on('connection',(socket) => {
+        console.log('si entro02')
             
             if(req){
                
