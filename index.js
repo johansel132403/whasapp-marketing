@@ -9,14 +9,14 @@ let port = process.env.PORT || 3000;
 
 let connection = require('./controllers/connection') 
 
-let socket  = require('socket.io')
+let socketio  = require('socket.io')
 
 let server = app.listen(port,'0.0.0.0',()=>{
     console.log(port)
     console.log('El puerto de 3700, ya esta listo..');
 })
 
-var io =  socket(server,{
+var io =  socketio(server,{
     cors:{
         origins:['http://localhost:4200','http://localhost'],
         methods: ["GET", "POST"],
@@ -32,7 +32,7 @@ let soc  = require('./controllers/usuario.controller');
 
 soc.receivPosteMessage(io)
 
-io.on('connection',()=>{
+io.on('connection',(socket)=>{
     console.log('La conexion ha sido creada con el socket: ' + socket.id)
 
 
