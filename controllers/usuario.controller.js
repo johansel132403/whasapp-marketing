@@ -166,18 +166,12 @@ let controllers  = {
         // console.log('Incoming webhook: ' + JSON.stringify(req.body));
 
         io.on('connection',(socket) => {
-            socket.on("hello", (arg, callback) => {
-                console.log(arg); // "world"
-                console.log('si entro al world')
-
-                callback("got it");
-                return res.status(200).send(
-                    JSON.stringify(req.body)
-                )
-              });
-
-        })
-
+            socket.emit("data",req.body )
+            return res.status(200).send(
+                JSON.stringify(req.body)
+            )
+          });
+            
 
 
       }

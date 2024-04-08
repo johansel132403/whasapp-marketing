@@ -18,7 +18,8 @@ let server = app.listen(port,'0.0.0.0',()=>{
 
 var io =  socket(server,{
     cors:{
-        origin:['http://localhost:8100','http://localhost'],
+        origins:['http://localhost:4200','http://localhost'],
+        methods: ["GET", "POST"],
        
     },
 
