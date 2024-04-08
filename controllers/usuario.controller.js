@@ -160,18 +160,20 @@ let controllers  = {
       },
 
       receivPosteMessage: function( io, req, res){
-        console.log('si entro')
-        console.log('io',io)
+     
 
         // console.log('Incoming webhook: ' + JSON.stringify(req.body));
 
-        io.on('connection',(socket) => {
-            socket.emit("data","hiiii" )
-            let data =  JSON.stringify(req.body)
+        if(req){
+            io.on('connection',(socket) => {
+                socket.emit("data","hiiii" )
+                let data =  JSON.stringify(req.body)
+    
+                // return res.status(200).send(
+                // )
+              });
 
-            // return res.status(200).send(
-            // )
-          });
+        }
             
 
 
