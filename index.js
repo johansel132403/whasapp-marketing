@@ -16,9 +16,22 @@ let server = app.listen(port,'0.0.0.0',()=>{
     console.log('El puerto de 3700, ya esta listo..');
 })
 
-let socketIo = socket(server);
+var io =  socket(server,{
+    cors:{
+        origin:['http://localhost:8100','http://localhost'],
+       
+    },
 
-socketIo.on('connection',()=>{
+    forceNew: true,
+    transports: ["polling"],   //https://stackoverflow.com/questions/49575350/websocket-connection-to-wss-error-during-websocket-handshake-unexpected-re
+    
+})
+
+let soc  = require('./controllers/usuario.controller');
+
+soc.receivPosteMessage(io)
+
+io.on('connection',()=>{
     console.log('La conexion ha sido creada con el socket: ' + socket.id)
 
 
@@ -30,7 +43,7 @@ socketIo.on('connection',()=>{
       });
 
     socket.on(connection.create,(newData)=>{
-        socketIo.socket.emit(connection.create, newData)
+        io.socket.emit(connection.create, newData)
     })
 
 

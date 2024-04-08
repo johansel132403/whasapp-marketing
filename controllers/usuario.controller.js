@@ -159,12 +159,27 @@ let controllers  = {
        }
       },
 
-      receivPosteMessage: function( req, res){
+      receivPosteMessage: function( io,req, res){
         console.log('si entro')
-        console.log('Incoming webhook: ' + JSON.stringify(req.body));
-        return res.status(200).send(
-            JSON.stringify(req.body)
-        )
+        console.log('io',io)
+
+        // console.log('Incoming webhook: ' + JSON.stringify(req.body));
+
+        io.on('connection',(socket) => {
+            socket.on("hello", (arg, callback) => {
+                console.log(arg); // "world"
+                console.log('si entro al world')
+
+                callback("got it");
+                return res.status(200).send(
+                    JSON.stringify(req.body)
+                )
+              });
+
+        })
+
+
+
       }
 
 
