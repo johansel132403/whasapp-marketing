@@ -165,24 +165,24 @@ let controllers  = {
 
         // console.log('Incoming webhook: ' + JSON.stringify(req.body));
         console.log('si req',res)
+        let body =     JSON.stringify(req.body)
+             
+      console.log('req.body',body)
 
-        io.on('connection',(socket) => {
-        console.log('si entro02')
+        // io.on('connection',(socket) => {
+        // console.log('si entro02')
             
-            if(req){
-        console.log('si entro03')
+        //     if(req){
+        // console.log('si entro03')
+
 
                
-                             let body =     JSON.stringify(req.body)
-                                  
-                           console.log('req.body',body)
-            
-               socket.emit("data","body")
-               return res.status(200).send(
-                   JSON.stringify(req.body)
-               )
-           }
-          });
+        //        socket.emit("data","body")
+        //        return res.status(200).send(
+        //            JSON.stringify(req.body)
+        //        )
+        //    }
+        //   });
             
 
 
