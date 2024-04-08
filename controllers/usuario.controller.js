@@ -159,7 +159,7 @@ let controllers  = {
        }
       },
 
-      receivPosteMessage: function( io,req, res){
+      receivPosteMessage: function( req, res){
         console.log('si entro')
         // console.log('io',io)
 
