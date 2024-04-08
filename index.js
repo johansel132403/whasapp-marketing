@@ -27,8 +27,8 @@ var io =  socket(server,{
     transports: ["polling"],   //https://stackoverflow.com/questions/49575350/websocket-connection-to-wss-error-during-websocket-handshake-unexpected-re
     
 })
-
 let soc  = require('./controllers/usuario.controller');
+
 
 soc.receivPosteMessage(io)
 
@@ -39,11 +39,11 @@ io.on('connection',()=>{
     // socket.on(connection.change,(change) => {
     //     socketIo.socket.emit(connection.change, change)
     // })
-    socket.emit("hello", "world", (response) => {
+    io.emit("hello", "world", (response) => {
         console.log(response); // "got it"
       });
 
-    socket.on(connection.create,(newData)=>{
+      io.on(connection.create,(newData)=>{
         io.socket.emit(connection.create, newData)
     })
 
