@@ -164,7 +164,7 @@ let controllers  = {
         // console.log('io',io)
 
         // console.log('Incoming webhook: ' + JSON.stringify(req.body));
-       // console.log('si req',req)
+        console.log('si req',res)
 
         io.on('connection',(socket) => {
         console.log('si entro02')
