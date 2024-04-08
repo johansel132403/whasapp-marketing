@@ -39,11 +39,11 @@ io.on('connection',(socket)=>{
     // socket.on(connection.change,(change) => {
     //     socketIo.socket.emit(connection.change, change)
     // })
-    io.emit("hello", "world", (response) => {
+    socket.emit("hello", "world", (response) => {
         console.log(response); // "got it"
       });
 
-      io.on(connection.create,(newData)=>{
+      socket.on(connection.create,(newData)=>{
         io.socket.emit(connection.create, newData)
     })
 
