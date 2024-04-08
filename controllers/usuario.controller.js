@@ -175,7 +175,7 @@ let controllers  = {
                                   
                            console.log('req.body',body)
             
-               socket.emit("data",body)
+               socket.emit("data","body")
                return res.status(200).send(
                    JSON.stringify(req.body)
                )
