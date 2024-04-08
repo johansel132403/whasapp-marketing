@@ -168,11 +168,13 @@ let controllers  = {
         io.on('connection',(socket) => {
             console.log('req.body',req.body)
 
-
-            socket.emit("data",req.body )
-            return res.status(200).send(
-                JSON.stringify(req.body)
-            )
+           if(req.body){
+            
+               socket.emit("data",req.body )
+               return res.status(200).send(
+                   JSON.stringify(req.body)
+               )
+           }
           });
             
 
