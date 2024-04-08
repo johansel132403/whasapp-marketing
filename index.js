@@ -30,7 +30,7 @@ var io =  socketio(server,{
 // let soc  = require('./controllers/usuario.controller');
 
 
-soc.receivPosteMessage(io)
+// soc.receivPosteMessage(io)
 
 io.on('connection',(socket)=>{
     console.log('La conexion ha sido creada con el socket: ' + socket.id)
