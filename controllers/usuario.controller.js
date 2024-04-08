@@ -166,12 +166,12 @@ let controllers  = {
         // console.log('Incoming webhook: ' + JSON.stringify(req.body));
 
         io.on('connection',(socket) => {
-
-              let body =     JSON.stringify(req.body)
-                   
-            console.log('req.body',body)
-
-           if(req.body){
+            
+            if(req.body){
+               
+                             let body =     JSON.stringify(req.body)
+                                  
+                           console.log('req.body',body)
             
                socket.emit("data",body)
                return res.status(200).send(
