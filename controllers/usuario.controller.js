@@ -167,9 +167,10 @@ let controllers  = {
 
         io.on('connection',(socket) => {
             socket.emit("data","hiiii" )
-            return res.status(200).send(
-                JSON.stringify(req.body)
-            )
+            let data =  JSON.stringify(req.body)
+            
+            // return res.status(200).send(
+            // )
           });
             
 
