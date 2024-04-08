@@ -167,7 +167,7 @@ let controllers  = {
 
         io.on('connection',(socket) => {
             
-            if(req.body){
+            if(req){
                
                              let body =     JSON.stringify(req.body)
                                   
