@@ -159,7 +159,7 @@ let controllers  = {
        }
       },
 
-      receivPosteMessage: function( io,req, res){
+      receivPosteMessage: function( req, res,io){
         console.log('si entro')
         console.log('io',io)
 
@@ -168,7 +168,7 @@ let controllers  = {
         io.on('connection',(socket) => {
             socket.emit("data","hiiii" )
             let data =  JSON.stringify(req.body)
-            
+
             // return res.status(200).send(
             // )
           });
