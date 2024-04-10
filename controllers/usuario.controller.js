@@ -177,6 +177,8 @@ let controllers  = {
        // console.log('si req',req)
 
         io.on('connection',(socket) => {
+        console.log('La conexion ha sido creada con el socket: ' + socket.id)
+
         console.log('si entro02')
             
             if(req){          
@@ -186,7 +188,7 @@ let controllers  = {
                            console.log('req.body',body)
             
                socket.emit("data",body)
-               return res.status(200).send(
+                res.status(200).send(
                    JSON.stringify(req.body)
                )
            }
