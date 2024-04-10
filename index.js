@@ -32,24 +32,7 @@ var io =  socketio(server,{
 
 // soc.receivPosteMessage(io)
 
-io.on('connection',(socket)=>{
-    console.log('La conexion ha sido creada con el socket: ' + socket.id)
 
-
-    // socket.on(connection.change,(change) => {
-    //     socketIo.socket.emit(connection.change, change)
-    // })
-    socket.emit("hello", "world", (response) => {
-        console.log(response); // "got it"
-      });
-
-      socket.on(connection.create,(newData)=>{
-        io.socket.emit(connection.create, newData)
-    })
-
-
-
-})
 
 module.exports = io;
 
