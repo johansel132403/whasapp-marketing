@@ -188,9 +188,9 @@ let controllers  = {
         //                    console.log('req.body',body)
             
         //        socket.emit("data",body)
-        //     //     res.status(200).send(
-        //     //        JSON.stringify(req.body)
-        //     //    )
+             return  res.status(200).send(
+                   JSON.stringify(req.body)
+               )
         //    }
         //   });
             
