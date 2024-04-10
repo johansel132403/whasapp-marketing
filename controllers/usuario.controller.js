@@ -161,6 +161,14 @@ let controllers  = {
 
       receivPosteMessage: function( req, res){
 
+
+
+        // let phone_number_id =
+        // req.body.entry[0].changes[0].value.metadata.phone_number_id;
+        // let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
+        // let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+
+
         const io = require('../index');
         console.log('si entro')
         // console.log('io',io)
@@ -171,13 +179,13 @@ let controllers  = {
         io.on('connection',(socket) => {
         console.log('si entro02')
             
-            if(req){
+            if(req){          
                
                              let body =     JSON.stringify(req.body)
                                   
                            console.log('req.body',body)
             
-               socket.emit("data","body")
+               socket.emit("data",body)
                return res.status(200).send(
                    JSON.stringify(req.body)
                )
