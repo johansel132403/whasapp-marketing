@@ -9,7 +9,7 @@ let port = process.env.PORT || 3000;
 
 let connection = require('./controllers/connection') 
 
-// let socketio  = require('socket.io')
+ let socketio  = require('socket.io')
 
 let server = app.listen(port,'0.0.0.0',()=>{
     console.log(port)
