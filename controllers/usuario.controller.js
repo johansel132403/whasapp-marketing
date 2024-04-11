@@ -186,19 +186,19 @@ let controllers  = {
       
 
            
-              io.on('connection',(socket) => {
-              console.log('La conexion ha sido creada con el socket: ' + socket.id)
+              // io.on('connection',(socket) => {
+              // console.log('La conexion ha sido creada con el socket: ' + socket.id)
       
-              console.log('si entro02')
+              // console.log('si entro02')
                   
-                  if(req){          
+              //     if(req){          
                      
-                                   let body =     JSON.stringify(req.body)
+              //                      let body =     JSON.stringify(req.body)
                                         
                   
-                     socket.emit("data",body)
-                 }
-               });
+              //        socket.emit("data",body)
+              //    }
+              //  });
               
            
             
