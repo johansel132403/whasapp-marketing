@@ -181,24 +181,28 @@ let controllers  = {
               JSON.stringify(req.body)
           )
 
+
+      
+
            
               io.on('connection',(socket) => {
               console.log('La conexion ha sido creada con el socket: ' + socket.id)
       
               console.log('si entro02')
                   
-            });
-            if(req){          
-               
-                             let body =     JSON.stringify(req.body)
-                                  
-                           console.log('req.body',body)
-            
-                           io.socket.emit("data",body)
-                          }
+                  if(req){          
+                     
+                                   let body =     JSON.stringify(req.body)
+                                        
+                                 console.log('req.body',body)
+                  
+                     socket.emit("data",body)
+                 }
+               });
               
            
             
+     
             
 
 
