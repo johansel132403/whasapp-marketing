@@ -176,7 +176,7 @@ let controllers  = {
         console.log('si entro01')
         let body =     JSON.stringify(req.body)
                                         
-        console.log('req.body',io)
+       
           res.status(200).send(
               JSON.stringify(req.body)
           )
