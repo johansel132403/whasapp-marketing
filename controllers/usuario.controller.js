@@ -173,7 +173,7 @@ let controllers  = {
         
 
         //console.log('Incoming webhook: ' + JSON.stringify(req.body));
-       console.log('si req',req)
+    
 
         io.on('connection',(socket) => {
         console.log('La conexion ha sido creada con el socket: ' + socket.id)
