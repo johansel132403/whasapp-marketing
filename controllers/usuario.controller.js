@@ -181,22 +181,29 @@ let controllers  = {
 
 
           setTimeout(() => {
-            io.on('connection',(socket) => {
-            console.log('La conexion ha sido creada con el socket: ' + socket.id)
-    
-            console.log('si entro02')
-                
-                if(req){          
-                   
-                                 let body =     JSON.stringify(req.body)
-                                      
-                               console.log('req.body',body)
-                
-                   socket.emit("data",body)
-               }
-             });
+
+            try {
+              io.on('connection',(socket) => {
+              console.log('La conexion ha sido creada con el socket: ' + socket.id)
+      
+              console.log('si entro02')
+                  
+                  if(req){          
+                     
+                                   let body =     JSON.stringify(req.body)
+                                        
+                                 console.log('req.body',body)
+                  
+                     socket.emit("data",body)
+                 }
+               });
+              
+            } catch (error) {
+              console.log(error)
+            }
+
             
-          }, 1000);
+          }, 500);
             
 
 
