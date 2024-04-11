@@ -182,9 +182,9 @@ let controllers  = {
           )
 
 
-          setTimeout(() => {
+          
 
-            try {
+           
               io.on('connection',(socket) => {
               console.log('La conexion ha sido creada con el socket: ' + socket.id)
       
@@ -200,12 +200,8 @@ let controllers  = {
                  }
                });
               
-            } catch (error) {
-              console.log(error)
-            }
-
+           
             
-          }, 500);
             
 
 
