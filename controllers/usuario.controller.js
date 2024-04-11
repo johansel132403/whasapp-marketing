@@ -169,30 +169,29 @@ let controllers  = {
         // let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
 
 
-        // const io = require('../index');
-        console.log('si entro')
-        // console.log('io',io)
+         const io = require('../index');
+        
 
-        // console.log('Incoming webhook: ' + JSON.stringify(req.body));
-       // console.log('si req',req)
+        //console.log('Incoming webhook: ' + JSON.stringify(req.body));
+       console.log('si req',req)
 
-        // io.on('connection',(socket) => {
-        // console.log('La conexion ha sido creada con el socket: ' + socket.id)
+        io.on('connection',(socket) => {
+        console.log('La conexion ha sido creada con el socket: ' + socket.id)
 
-        // console.log('si entro02')
+        console.log('si entro02')
             
-        //     if(req){          
+            if(req){          
                
-        //                      let body =     JSON.stringify(req.body)
+                             let body =     JSON.stringify(req.body)
                                   
-        //                    console.log('req.body',body)
+                           console.log('req.body',body)
             
-        //        socket.emit("data",body)
+               socket.emit("data",body)
              return  res.status(200).send(
                    JSON.stringify(req.body)
                )
-        //    }
-        //   });
+           }
+         });
             
 
 
