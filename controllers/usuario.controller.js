@@ -194,16 +194,12 @@ let controllers  = {
             chat.msg_body   = msg_body;
     
     
-            chat.save( async ( err, response )  => {
-
-                if( err ) return  await res.status( 500 ).send( { Mensaje:'Error al tratar de guardar estos datos' } );
-
-                if( response ){
-                    return  await res.status( 200 ).send( { chat:response } );
-                }else{
-                    return await res.status( 400 ).send( { error:'Error, no hay datos guardados'} );
-                }
-            })
+            
+                let output;
+                (async () => {
+                  output = await chat.save();
+                  console.log('output',output)
+                })
                
          
         }else{
