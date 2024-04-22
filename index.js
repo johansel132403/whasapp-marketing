@@ -1,7 +1,7 @@
 
 let mongoose = require('mongoose');
 let app = require('./app');
-
+require('dotenv').config({path: 'variable.env'});
 let port = process.env.PORT || 3000;
 //ESTO ES PARA CONECTARNOS A MONGOOSE POR MEDIO DE LAS PROMESAS
 // mongoose.Promise = global.Promise;
