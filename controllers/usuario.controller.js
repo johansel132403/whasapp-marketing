@@ -166,6 +166,10 @@ let controllers  = {
       
       receivPosteMessage: function( req, res){
 
+
+
+        // req.body {"object":"whatsapp_business_account","entry":[{"id":"249865991547503","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},"contacts":[{"profile":{"name":"Hanck"},"wa_id":"18093199970"}],"messages":[{"from":"18093199970","id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQUQzNkQ0MTQwNEVFNDY1N0JCRQA=","timestamp":"1713813794","text":{"body":"B"},"type":"text"}]},"field":"messages"}]}]}
+
         let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
         let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
         let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
@@ -186,24 +190,24 @@ let controllers  = {
           if(phone_number_id && from){
 
             chat.phone_number_id = phone_number_id;
-            chat.from  = from;
+            // chat.from  = from;
             chat.msg_body   = msg_body;
     
     
-            chat.save( ( err, response ) => {
+            chat.save( async ( err, response )  => {
 
-                if( err ) return res.status( 500 ).send( { Mensaje:'Error al tratar de guardar estos datos' } );
+                if( err ) return  await res.status( 500 ).send( { Mensaje:'Error al tratar de guardar estos datos' } );
 
                 if( response ){
-                    return res.status( 200 ).send( { chat:response } );
+                    return  await res.status( 200 ).send( { chat:response } );
                 }else{
-                    return res.status( 400 ).send( { error:'Error, no hay datos guardados'} );
+                    return await res.status( 400 ).send( { error:'Error, no hay datos guardados'} );
                 }
             })
                
          
         }else{
-            return res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+            return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
         }
 
            
