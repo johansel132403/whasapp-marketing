@@ -178,6 +178,7 @@ let controllers  = {
         //console.log('Incoming webhook: ' + JSON.stringify(req.body));
         console.log('si entro01')
         let body =     JSON.stringify(req.body)
+        console.log('body',body)
         console.log('phone_number_id',phone_number_id)
         console.log('from',from)
         console.log('msg_body',msg_bodyt)
