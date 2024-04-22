@@ -164,7 +164,7 @@ let controllers  = {
       },
 
       
-      receivPosteMessage: function( req, res){
+      receivPosteMessage: async function( req, res){
 
 
 
@@ -178,7 +178,9 @@ let controllers  = {
         //console.log('Incoming webhook: ' + JSON.stringify(req.body));
         console.log('si entro01')
         let body =     JSON.stringify(req.body)
-        console.log('req.body',body.object)
+        console.log('phone_number_id',phone_number_id)
+        console.log('from',from)
+        console.log('msg_body',msg_bodyt)
                                         
        
           res.status(200).send(
@@ -196,10 +198,10 @@ let controllers  = {
     
             
                 let output;
-                (async () => {
+               
                   output = await chat.save();
                   console.log('output',output)
-                })
+                
                
          
         }else{
