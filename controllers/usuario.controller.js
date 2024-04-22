@@ -181,7 +181,7 @@ let controllers  = {
         console.log('body',body)
         console.log('phone_number_id',phone_number_id)
         console.log('from',from)
-        console.log('msg_body',msg_bodyt)
+        console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
                                         
        
           res.status(200).send(
@@ -193,7 +193,7 @@ let controllers  = {
           if(phone_number_id && from){
 
             chat.phone_number_id = phone_number_id;
-            // chat.from  = from;
+            chat.from  = from;
             chat.msg_body   = msg_body;
     
     
