@@ -178,7 +178,7 @@ let controllers  = {
         //console.log('Incoming webhook: ' + JSON.stringify(req.body));
         console.log('si entro01')
         let body =     JSON.stringify(req.body)
-        console.log('req.body',body)
+        console.log('req.body',body.object)
                                         
        
           res.status(200).send(

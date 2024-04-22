@@ -26,17 +26,17 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
         })
         .catch( err => console.log(err))  
 
-var io =  socketio(server,{
-    cors:{
-        origins:['http://localhost:4200','http://localhost'],
-        methods: ["GET", "POST"],
+// var io =  socketio(server,{
+//     cors:{
+//         origins:['http://localhost:4200','http://localhost'],
+//         methods: ["GET", "POST"],
        
-    },
+//     },
 
-    forceNew: true,
-    transports: ["polling"],   //https://stackoverflow.com/questions/49575350/websocket-connection-to-wss-error-during-websocket-handshake-unexpected-re
+//     forceNew: true,
+//     transports: ["polling"],   //https://stackoverflow.com/questions/49575350/websocket-connection-to-wss-error-during-websocket-handshake-unexpected-re
     
-})
+// })
 // let soc  = require('./controllers/usuario.controller');
 
 
