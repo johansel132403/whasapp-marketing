@@ -186,6 +186,26 @@ let controllers  = {
                   console.log('from',from)
                   console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
                                                   
+                  let chat = new Chat();
+                  
+                  if(phone_number_id && from){
+          
+                    chat.phone_number_id = phone_number_id;
+                    chat.from  = from;
+                    chat.msg_body   = msg_body;
+            
+                                             
+                    
+                        let output;
+                       
+                          output = await chat.save();
+                          console.log('output',output)
+                        
+                       
+                 
+                }else{
+                    return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                }
 
         }
        
@@ -193,26 +213,6 @@ let controllers  = {
               JSON.stringify(req.body)
           )
 
-          let chat = new Chat();
-          
-          if(phone_number_id && from){
-
-            chat.phone_number_id = phone_number_id;
-            chat.from  = from;
-            chat.msg_body   = msg_body;
-    
-                                     
-            
-                let output;
-               
-                  output = await chat.save();
-                  console.log('output',output)
-                
-               
-         
-        }else{
-            return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
-        }
 
            
               io.on('connection',(socket) => {
