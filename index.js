@@ -16,16 +16,6 @@ let server = app.listen(port,'0.0.0.0',()=>{
     console.log('El puerto de 3700, ya esta listo..');
 })    
 
-
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
-        .then(()  =>{
-               console.log(" La conexion a la bd se ha realizado correctamente !! ")
-             
-              
-        })
-        .catch( err => console.log(err))  
-
 var io =  socketio(server,{
     cors:{
         origins:['http://localhost:4200','http://localhost'],
@@ -37,6 +27,16 @@ var io =  socketio(server,{
     transports: ["polling"],   //https://stackoverflow.com/questions/49575350/websocket-connection-to-wss-error-during-websocket-handshake-unexpected-re
     
 })
+
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
+        .then(()  =>{
+               console.log(" La conexion a la bd se ha realizado correctamente !! ")
+             
+              
+        })
+        .catch( err => console.log(err))  
+
 let soc  = require('./controllers/usuario.controller');
 
 
