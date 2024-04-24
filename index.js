@@ -37,10 +37,10 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
         })
         .catch( err => console.log(err))  
 
-let soc  = require('./controllers/usuario.controller');
+// let soc  = require('./controllers/usuario.controller');
 
 
-soc.receivPosteMessage(io)
+// soc.receivPosteMessage(io)
 
 
 
