@@ -170,19 +170,24 @@ let controllers  = {
 
         // req.body {"object":"whatsapp_business_account","entry":[{"id":"249865991547503","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},"contacts":[{"profile":{"name":"Hanck"},"wa_id":"18093199970"}],"messages":[{"from":"18093199970","id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQUQzNkQ0MTQwNEVFNDY1N0JCRQA=","timestamp":"1713813794","text":{"body":"B"},"type":"text"}]},"field":"messages"}]}]}
 
-        let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
-        let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-        let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
 
+        if(req){
+          
+                  let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
+                  let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
+                  let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+          
+          
+                  //console.log('Incoming webhook: ' + JSON.stringify(req.body));
+                  console.log('si entro01')
+                  let body =     JSON.stringify(req.body)
+                  console.log('body',body)
+                  console.log('phone_number_id',phone_number_id)
+                  console.log('from',from)
+                  console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
+                                                  
 
-        //console.log('Incoming webhook: ' + JSON.stringify(req.body));
-        console.log('si entro01')
-        let body =     JSON.stringify(req.body)
-        console.log('body',body)
-        console.log('phone_number_id',phone_number_id)
-        console.log('from',from)
-        console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
-                                        
+        }
        
           res.status(200).send(
               JSON.stringify(req.body)
