@@ -170,73 +170,68 @@ let controllers  = {
 
         // req.body {"object":"whatsapp_business_account","entry":[{"id":"249865991547503","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},"contacts":[{"profile":{"name":"Hanck"},"wa_id":"18093199970"}],"messages":[{"from":"18093199970","id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQUQzNkQ0MTQwNEVFNDY1N0JCRQA=","timestamp":"1713813794","text":{"body":"B"},"type":"text"}]},"field":"messages"}]}]}
 
+        if(req.body.object){ 
 
-        if(req.body.entry[0].changes[0].value.messages[0].from != "undefined"){
-          
-                  let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
-                  let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-                  let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
-          
-          
-                  //console.log('Incoming webhook: ' + JSON.stringify(req.body));
-                  console.log('si entro01')
-                  let body =     JSON.stringify(req.body)
-                  console.log('body',body)
-                  console.log('phone_number_id',phone_number_id)
-                  console.log('from',from)
-                  console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
-                                                  
-                  let chat = new Chat();
-                  
-                  if(phone_number_id && from){
-          
-                    chat.phone_number_id = phone_number_id;
-                    chat.from  = from;
-                    chat.msg_body   = msg_body;
-            
-                                             
-                    
-                        let output;
-                       
-                          output = await chat.save();
-                          console.log('output',output)
-                          
-                                  let io = require('../index');
-                                     
-                                        io.on('connection',(socket) => {
-                                        console.log('La conexion ha sido creada con el socket: ' + socket.id)
-                                
-                                        console.log('si entro02')
-                                            
-                                            if(body){          
-                                               
-                                                             let bodyb =     JSON.stringify(req.body)
-                                                                  
-                                            
-                                               socket.emit("data",bodyb)
-                                           }
-                                         });
-                                        
-                          
-                             res.status(200).send(
-                                 JSON.stringify(req.body)
-                             )
+            if(req.body.entry[0].changes[0].value.messages[0].from && req.body.entry[0].changes[0].value.messages[0].text.body){
+              
+                      let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
+                      let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
+                      let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+              
+              
+                      //console.log('Incoming webhook: ' + JSON.stringify(req.body));
+                      console.log('si entro01')
+                      let body =     JSON.stringify(req.body)
+                      console.log('body',body)
+                      console.log('phone_number_id',phone_number_id)
+                      console.log('from',from)
+                      console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
+                                                      
+                      let chat = new Chat();
+                      
+                      if(phone_number_id && from){
+              
+                        chat.phone_number_id = phone_number_id;
+                        chat.from  = from;
+                        chat.msg_body   = msg_body;
                         
-                       
-                 
-                }else{
-                    return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
-                }
+                            let output;
+                          
+                              output = await chat.save();
+                              console.log('output',output)
+                              
+                                      let io = require('../index');
+                                        
+                                            io.on('connection',(socket) => {
+                                            console.log('La conexion ha sido creada con el socket: ' + socket.id)
+                                    
+                                            console.log('si entro02')
+                                                
+                                                if(body){          
+                                                  
+                                                                let bodyb =     JSON.stringify(req.body)
+                                                                      
+                                                
+                                                  socket.emit("data",bodyb)
+                                              }
+                                            });
+                                            
+                              
+                                res.status(200).send(
+                                    JSON.stringify(req.body)
+                                )
+                            
+                          
+                    
+                    }else{
+                        return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                    }
 
-        }
-           
-            
-     
-            
-
+            }
 
       }
-
+     
+      }
 
 }
 
