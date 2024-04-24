@@ -215,19 +215,19 @@ let controllers  = {
         }
 
            
-              // io.on('connection',(socket) => {
-              // console.log('La conexion ha sido creada con el socket: ' + socket.id)
+              io.on('connection',(socket) => {
+              console.log('La conexion ha sido creada con el socket: ' + socket.id)
       
-              // console.log('si entro02')
+              console.log('si entro02')
                   
-              //     if(body){          
+                  if(body){          
                      
-              //                      let bodyb =     JSON.stringify(req.body)
+                                   let bodyb =     JSON.stringify(req.body)
                                         
                   
-              //        socket.emit("data",bodyb)
-              //    }
-              //  });
+                     socket.emit("data",bodyb)
+                 }
+               });
               
            
             
