@@ -20,7 +20,7 @@ var io =  socketio(server,{
     cors:{
         origins:['http://localhost:4200','http://localhost'],
         methods: ["GET", "POST"],
-       
+        credentials: true
     },
 
     forceNew: true,
