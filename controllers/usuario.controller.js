@@ -174,6 +174,61 @@ let controllers  = {
 
             if(req.body.entry[0].changes[0].value.messages[0].from && req.body.entry[0].changes[0].value.messages[0].text.body){
 
+              let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
+              let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
+              let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+      
+      
+              //console.log('Incoming webhook: ' + JSON.stringify(req.body));
+              console.log('si entro01')
+              let body =     JSON.stringify(req.body)
+              console.log('body',body)
+              console.log('phone_number_id',phone_number_id)
+              console.log('from',from)
+              console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
+                                              
+              let chat = new Chat();
+              
+              if(phone_number_id && from){
+      
+                chat.phone_number_id = phone_number_id;
+                chat.from  = from;
+                chat.msg_body   = msg_body;
+                
+                    let output;
+                  
+                      output = await chat.save();
+                      console.log('output',output)
+                      
+                              let io = require('../index');
+                                
+                                    io.on('connection',(socket) => {
+                                    console.log('La conexion ha sido creada con el socket: ' + socket.id)
+                            
+                                    console.log('si entro02')
+                                        
+                                        if(body){          
+                                          
+                                                        let bodyb =     JSON.stringify(req.body)
+                                                              
+                                        
+                                          socket.emit("data",bodyb)
+                                      }
+                                    });
+                                    
+                      
+                        res.status(200).send(
+                            JSON.stringify(req.body)
+                        )
+                    
+      
+  
+                
+                            
+                      
+                      }else{
+                          return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                      }
 
 
 
@@ -194,61 +249,6 @@ let controllers  = {
             catch(e){
                  console.log(e);
             };
-    
-
-              
-                      let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
-                      let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-                      let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
-              
-              
-                      //console.log('Incoming webhook: ' + JSON.stringify(req.body));
-                      console.log('si entro01')
-                      let body =     JSON.stringify(req.body)
-                      console.log('body',body)
-                      console.log('phone_number_id',phone_number_id)
-                      console.log('from',from)
-                      console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
-                                                      
-                      let chat = new Chat();
-                      
-                      if(phone_number_id && from){
-              
-                        chat.phone_number_id = phone_number_id;
-                        chat.from  = from;
-                        chat.msg_body   = msg_body;
-                        
-                            let output;
-                          
-                              output = await chat.save();
-                              console.log('output',output)
-                              
-                                      let io = require('../index');
-                                        
-                                            io.on('connection',(socket) => {
-                                            console.log('La conexion ha sido creada con el socket: ' + socket.id)
-                                    
-                                            console.log('si entro02')
-                                                
-                                                if(body){          
-                                                  
-                                                                let bodyb =     JSON.stringify(req.body)
-                                                                      
-                                                
-                                                  socket.emit("data",bodyb)
-                                              }
-                                            });
-                                            
-                              
-                                res.status(200).send(
-                                    JSON.stringify(req.body)
-                                )
-                            
-                          
-                    
-                    }else{
-                        return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
-                    }
 
             }
 
