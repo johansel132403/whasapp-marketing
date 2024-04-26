@@ -167,6 +167,21 @@ let controllers  = {
       receivPosteMessage: async function( req, res){
         let body =     JSON.stringify(req.body)
         console.log("req.Body",body)
+        console.log("recipient_id",body.recipient_id)
+
+
+
+
+        // {"object":"whatsapp_business_account","entry":[
+        //   {"id":"249865991547503","changes":[{"value":
+        //   {"messaging_product":"whatsapp",
+        //   "metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},
+        //   "statuses":[{"id":"wamid.HBgLMTgwOTMxOTk5NzAVAgARGBIzQkI4RDFGQ0Q4RDEyOEExMUYA",
+        //   "status":"sent",
+        //   "timestamp":"1714160518",
+        //   "recipient_id":"18093199970",
+        //   "conversation":{"id":"9f694bd23d25a5fe59ec2ffeffd921b6","expiration_timestamp":"1714242960",
+        //   "origin":{"type":"utility"}},"pricing":{"billable":true,"pricing_model":"CBP","category":"utility"}}]},"field":"messages"}]}]}
 
         // req.body {"object":"whatsapp_business_account","entry":[{"id":"249865991547503","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},"contacts":[{"profile":{"name":"Hanck"},"wa_id":"18093199970"}],"messages":[{"from":"18093199970","id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQUQzNkQ0MTQwNEVFNDY1N0JCRQA=","timestamp":"1713813794","text":{"body":"B"},"type":"text"}]},"field":"messages"}]}]}
 
