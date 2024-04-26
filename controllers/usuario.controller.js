@@ -173,6 +173,29 @@ let controllers  = {
         if(req.body.object){ 
 
             if(req.body.entry[0].changes[0].value.messages[0].from && req.body.entry[0].changes[0].value.messages[0].text.body){
+
+
+
+
+              try{
+
+                let chats = await Chat.findOne(req.body.entry[0].changes[0].value.messages[0].from).exec().then((response)=>{
+                               return response;
+                });
+
+                console.log("backChat",chats)
+    
+               
+                // return {
+                //   Chat: chats,
+                   
+                // }
+            }
+            catch(e){
+                 console.log(e);
+            };
+    
+
               
                       let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
                       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
