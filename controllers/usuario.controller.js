@@ -167,7 +167,7 @@ let controllers  = {
       receivPosteMessage: async function( req, res){
         let body =     JSON.stringify(req.body)
         console.log("req.Body",body)
-        console.log("recipient_id",body.recipient_id)
+        console.log("recipient_id",body.object.entry[0].changes[0])
 
 
 
@@ -187,7 +187,7 @@ let controllers  = {
 
         if(req.body.object){ 
 
-            if(req.body.entry[0].changes[0].value.messages[0].from && req.body.entry[0].changes[0].value.messages[0].text.body){
+            if(req.body.object.entry[0].changes[0].value.messages[0].from && req.body.entry[0].changes[0].value.messages[0].text.body){
 
               let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
               let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
