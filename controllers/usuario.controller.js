@@ -166,7 +166,9 @@ let controllers  = {
       
       receivPosteMessage: async function( req, res){
         let body =     JSON.stringify(req.body)
-        console.log('xxxxxxxx',JSON.stringify(JSON.parse(req.body)));
+        let d = JSON.parse(JSON.stringify(req.body))
+        console.log('dx',d.entry); 
+        console.log('xxxxxxxx',JSON.parse(JSON.stringify(req.body)));
         // console.log("req.Body",body)
         console.log("entry",body.entry)
         console.log("req.body.entry[0].changes",req.body.entry[0].changes)
