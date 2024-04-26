@@ -24,7 +24,7 @@ var io =  socketio(server,{
     },
 
     forceNew: true,
-    transports: ["polling"],   //https://stackoverflow.com/questions/49575350/websocket-connection-to-wss-error-during-websocket-handshake-unexpected-re
+    // transports: ["polling"],   //   
     
 })
 
