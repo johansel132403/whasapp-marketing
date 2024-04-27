@@ -167,18 +167,18 @@ let controllers  = {
       receivPosteMessage: async function( req, res){
 
 
-        let body =     JSON.stringify(req.body)
-        let df = JSON.parse(body);
+        // let body =     JSON.stringify(req.body)
+        // let df = JSON.parse(body);
 
         
-        console.log('obj',df.entry[0].changes[0].value.statuses[0].id)
-        console.log('body',body);
-        let d = JSON.parse(JSON.stringify(req.body))
-        console.log('dx',d.entry[0].changes); 
-        console.log('xxxxxxxx',JSON.parse(JSON.stringify(req.body)));
-        // console.log("req.Body",body)
-        console.log("entry",body.entry)
-        console.log("req.body.entry[0].changes",req.body.entry[0].changes)
+        // console.log('obj',df.entry[0].changes[0].value.statuses[0].id)
+        // console.log('body',body);
+        // let d = JSON.parse(JSON.stringify(req.body))
+        // console.log('dx',d.entry[0].changes); 
+        // console.log('xxxxxxxx',JSON.parse(JSON.stringify(req.body)));
+        // // console.log("req.Body",body)
+        // console.log("entry",body.entry)
+        // console.log("req.body.entry[0].changes",req.body.entry[0].changes)
 
 
 
