@@ -59,7 +59,7 @@ let controllers  = {
             }
           }
 
-          request(options, callback);   
+          request(options, callback);
 
 
 
@@ -71,7 +71,7 @@ let controllers  = {
       crateTemplate: async function( req, res ){
 
         try{
-        
+
 
 
           const body =  {
@@ -130,13 +130,13 @@ let controllers  = {
               },
             });
             console.log(response)
-              
+
             return response.data
         }catch(e){
             console.log(e)
             return Promise.resolve(e)
         }
-        
+
       },
 
 
@@ -157,24 +157,24 @@ let controllers  = {
          }else{
             res.status(400).send("error")
          }
-        
+
        } catch (error) {
            console.log(error)
        }
       },
 
-      
+
       receivPosteMessage: async function( req, res, next){
 
         // console.log('IN !')
         // let body =     JSON.stringify(req.body)
         // let df = JSON.parse(body);
 
-        
+
         // console.log('obj',df.entry[0].changes[0].value.statuses[0].id)
         // console.log('body',body);
         // let d = JSON.parse(JSON.stringify(req.body))
-        // console.log('dx',d.entry[0].changes); 
+        // console.log('dx',d.entry[0].changes);
         // console.log('xxxxxxxx',JSON.parse(JSON.stringify(req.body)));
         // // console.log("req.Body",body)
         // console.log("entry",body.entry)
@@ -196,7 +196,7 @@ let controllers  = {
 
         // req.body {"object":"whatsapp_business_account","entry":[{"id":"249865991547503","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},"contacts":[{"profile":{"name":"Hanck"},"wa_id":"18093199970"}],"messages":[{"from":"18093199970","id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQUQzNkQ0MTQwNEVFNDY1N0JCRQA=","timestamp":"1713813794","text":{"body":"B"},"type":"text"}]},"field":"messages"}]}]}
 
-        if(req.body.object){ 
+        if(req.body.object){
           // let body =     JSON.stringify(req.body)
           // let obj = JSON.parse(body);
 
@@ -214,8 +214,8 @@ let controllers  = {
               let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
               let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
               let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
-      
-      
+
+
               //console.log('Incoming webhook: ' + JSON.stringify(req.body));
               console.log('si entro01')
               // let body =     JSON.stringify(req.body)
@@ -223,64 +223,64 @@ let controllers  = {
               // console.log('phone_number_id',phone_number_id)
               // console.log('from',from)
               // console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
-                                              
+
               let chat = new Chat();
-              
+
               if(phone_number_id && from){
-      
+
                 chat.phone_number_id = phone_number_id;
                 chat.from  = from;
                 chat.msg_body   = msg_body;
-                
-              
-                  
+
+
+
                     // let  output = await chat.save();
-                      
-                      
+
+
                               // let io = require('../index');
-                                
+
                               //       io.on('connection',(socket) => {
                               //       console.log('La conexion ha sido creada con el socket: ' + socket.id)
-                            
+
                               //       console.log('si entro02')
-                                        
-                              //           if(body){          
-                                          
+
+                              //           if(body){
+
                               //                           let bodyb =     JSON.stringify(req.body)
-                                                              
-                                        
+
+
                               //             socket.emit("data",bodyb)
                               //         }
                               //       });
-                                    
-                      
-                              
-                              
-                              
-                              
-                              
+
+
+
+
+
+
+
                             }else{
                               return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
                             }
-                            
-                            
-                              res.status(200).send(
-                                  JSON.stringify(req.body)
-                              )
-                          
+
+
+                              // res.status(200).send(
+                              //     JSON.stringify(req.body)
+                              // )
+
                                               // ESTE CODIGO TIENE QUE IR EN OTRA FUNCION NO EN ESTA... INICIO.....
             //   try{
 
             //     let chats = await Chat.find({"from":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
             //                    return response;
-            //     });           
+            //     });
 
             //     console.log("backChat",chats)
-    
-               
+
+
             //     // return {
             //     //   Chat: chats,
-                   
+
             //     // }
             // }
             // catch(e){
@@ -289,7 +289,7 @@ let controllers  = {
 
             }
 
-            return   res.status(200).send(
+               res.status(200).send(
               JSON.stringify(req.body)
           )
 
