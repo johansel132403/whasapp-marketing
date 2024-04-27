@@ -234,8 +234,8 @@ let controllers  = {
                 
                     let output;
                   
-                       chat.save();
-                   
+                      output = await chat.save();
+                      
                       
                               let io = require('../index');
                                 
@@ -268,7 +268,7 @@ let controllers  = {
                       }
 
 
-                                              // ESTE CODIGO TIENE QUE IR EN OTRA FUNCION NO EN ESTA... INICIO....
+                                              // ESTE CODIGO TIENE QUE IR EN OTRA FUNCION NO EN ESTA... INICIO.....
             //   try{
 
             //     let chats = await Chat.find({"from":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
