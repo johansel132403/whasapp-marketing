@@ -232,9 +232,9 @@ let controllers  = {
                 chat.from  = from;
                 chat.msg_body   = msg_body;
                 
-                    let output;
+              
                   
-                      output = await chat.save();
+                    // let  output = await chat.save();
                       
                       
                               // let io = require('../index');
