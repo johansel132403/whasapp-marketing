@@ -286,12 +286,12 @@ let controllers  = {
             // catch(e){
             //      console.log(e);
             // };
+            res.status(200).send(
+           JSON.stringify(req.body)
+
+          )
 
             }
-
-               res.status(200).send(
-              JSON.stringify(req.body)
-          )
 
       }
       return next()
