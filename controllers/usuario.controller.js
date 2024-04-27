@@ -166,7 +166,7 @@ let controllers  = {
       
       receivPosteMessage: async function( req, res){
 
-
+        console.log('IN !')
         // let body =     JSON.stringify(req.body)
         // let df = JSON.parse(body);
 
