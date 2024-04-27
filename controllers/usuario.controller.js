@@ -167,13 +167,9 @@ let controllers  = {
       receivPosteMessage: async function( req, res){
 
 
-        // let body =     JSON.parse(req.body)
-        // console.log(Object.prototype.toString.call(body));
-
-        for(var property in req.body) {
-          console.log((property + "=" + body[property]));
-      }
-
+        let body =     JSON.stringify(req.body)
+        let df = JSON.parse(body);
+        console.log('dfgetererererer',df)
         console.log('body',body);
         let d = JSON.parse(JSON.stringify(req.body))
         console.log('dx',d.entry[0].changes); 
