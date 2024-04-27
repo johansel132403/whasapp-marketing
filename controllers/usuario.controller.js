@@ -271,7 +271,7 @@ let controllers  = {
 
               try{
 
-                let chats = await Chat.findOne(req.body.entry[0].changes[0].value.messages[0].from).exec().then((response)=>{
+                let chats = await Chat.findOne({"from":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
                                return response;
                 });
 
