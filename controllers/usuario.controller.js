@@ -168,7 +168,12 @@ let controllers  = {
 
 
         let body =     JSON.parse(req.body)
-        console.log(Object.prototype.toString.call(body));
+        // console.log(Object.prototype.toString.call(body));
+
+        for(var property in body) {
+          console.log((property + "=" + body[property]));
+      }
+
         console.log('body',body);
         let d = JSON.parse(JSON.stringify(req.body))
         console.log('dx',d.entry[0].changes); 
