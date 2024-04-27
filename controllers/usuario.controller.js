@@ -199,6 +199,10 @@ let controllers  = {
         if(req.body.object){ 
           let body =     JSON.stringify(req.body)
           let obj = JSON.parse(body);
+
+
+          console.log(obj.entry[0].changes[0].value.statuses[0].recipient_id)
+
             if( obj.entry[0].changes[0].value.statuses[0].id ){
 
               let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
