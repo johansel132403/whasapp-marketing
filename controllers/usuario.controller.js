@@ -164,7 +164,7 @@ let controllers  = {
       },
 
       
-      receivPosteMessage: async function( req, res){
+      receivPosteMessage: async function( req, res, next){
 
         console.log('IN !')
         // let body =     JSON.stringify(req.body)
@@ -290,7 +290,7 @@ let controllers  = {
             }
 
       }
-     
+      return next()
       }
 
 }
