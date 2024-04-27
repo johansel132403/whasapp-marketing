@@ -269,23 +269,23 @@ let controllers  = {
 
 
 
-              try{
+            //   try{
 
-                let chats = await Chat.find({"from":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
-                               return response;
-                });
+            //     let chats = await Chat.find({"from":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
+            //                    return response;
+            //     });
 
-                console.log("backChat",chats)
+            //     console.log("backChat",chats)
     
                
-                // return {
-                //   Chat: chats,
+            //     // return {
+            //     //   Chat: chats,
                    
-                // }
-            }
-            catch(e){
-                 console.log(e);
-            };
+            //     // }
+            // }
+            // catch(e){
+            //      console.log(e);
+            // };
 
             }
 
