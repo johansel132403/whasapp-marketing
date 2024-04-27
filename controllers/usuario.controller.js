@@ -167,16 +167,8 @@ let controllers  = {
       receivPosteMessage: async function( req, res){
 
 
-        let userObj = JSON.parse(req.body, (key, value) => {
-          if (typeof value === 'string') {
-            return value.toUpperCase();
-          }
-          return value;
-        });
-        
-
-        console.log("UserObj",userObj.entry)
         let body =     JSON.stringify(req.body)
+        console.log('body',body);
         let d = JSON.parse(JSON.stringify(req.body))
         console.log('dx',d.entry[0].changes); 
         console.log('xxxxxxxx',JSON.parse(JSON.stringify(req.body)));
