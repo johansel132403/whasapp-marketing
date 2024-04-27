@@ -254,20 +254,20 @@ let controllers  = {
                               //       });
                                     
                       
-                      return   res.status(200).send(
-                            JSON.stringify(req.body)
-                        )
-                    
-      
-  
-                
+                              
+                              
+                              
+                              
+                              
+                            }else{
+                              return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                            }
                             
-                      
-                      }else{
-                          return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
-                      }
-
-
+                            
+                              res.status(200).send(
+                                  JSON.stringify(req.body)
+                              )
+                          
                                               // ESTE CODIGO TIENE QUE IR EN OTRA FUNCION NO EN ESTA... INICIO.....
             //   try{
 
@@ -288,6 +288,10 @@ let controllers  = {
             // };
 
             }
+
+            return   res.status(200).send(
+              JSON.stringify(req.body)
+          )
 
       }
       return next()
