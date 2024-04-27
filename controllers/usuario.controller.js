@@ -170,10 +170,8 @@ let controllers  = {
         let body =     JSON.stringify(req.body)
         let df = JSON.parse(body);
 
-        for(var property in df) {
-          console.log(property + "=" + df[property]);
-      }
-        console.log('dfgetererererer',df)
+        
+        console.log('obj',df.entry[0].changes)
         console.log('body',body);
         let d = JSON.parse(JSON.stringify(req.body))
         console.log('dx',d.entry[0].changes); 
