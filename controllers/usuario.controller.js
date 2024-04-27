@@ -175,7 +175,7 @@ let controllers  = {
         });
         
 
-        console.log("UserObj",userObj)
+        console.log("UserObj",userObj.entry)
         let body =     JSON.stringify(req.body)
         let d = JSON.parse(JSON.stringify(req.body))
         console.log('dx',d.entry[0].changes); 
