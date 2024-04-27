@@ -171,7 +171,7 @@ let controllers  = {
         let df = JSON.parse(body);
 
         
-        console.log('obj',df.entry[0].changes)
+        console.log('obj',df.entry[0].changes[0].value.statuses)
         console.log('body',body);
         let d = JSON.parse(JSON.stringify(req.body))
         console.log('dx',d.entry[0].changes); 
