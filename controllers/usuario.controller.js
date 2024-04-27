@@ -167,10 +167,10 @@ let controllers  = {
       receivPosteMessage: async function( req, res){
 
 
-        let body =     JSON.parse(req.body)
+        // let body =     JSON.parse(req.body)
         // console.log(Object.prototype.toString.call(body));
 
-        for(var property in body) {
+        for(var property in req.body) {
           console.log((property + "=" + body[property]));
       }
 
