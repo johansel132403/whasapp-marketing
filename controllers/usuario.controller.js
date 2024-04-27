@@ -202,8 +202,10 @@ let controllers  = {
 
 
           console.log(obj.entry[0].changes[0].value.statuses[0].recipient_id)
+          console.log(obj.entry[0].changes[0].value.statuses[0].status)
+          console.log(obj.entry[0].changes[0].value.statuses[0].timestamp)
 
-            if( obj.entry[0].changes[0].value.statuses[0].id ){
+            if( obj.entry[0].changes[0].value.statuses[0].recipient_id && obj.entry[0].changes[0].value.statuses[0].id ){
 
               let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
               let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
