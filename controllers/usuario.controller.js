@@ -61,7 +61,7 @@ let controllers  = {
 
           request(options, callback);
 
-
+          
 
      },
 
@@ -206,7 +206,7 @@ let controllers  = {
           // console.log(obj.entry[0].changes[0].value.statuses[0].timestamp)
 
             if( req.body.entry &&
-              req.body.entry[0].changes &&
+              req.body.entry[0].changes &&            
               req.body.entry[0].changes[0] &&
               req.body.entry[0].changes[0].value.messages &&
               req.body.entry[0].changes[0].value.messages[0] ){
@@ -218,8 +218,8 @@ let controllers  = {
 
               //console.log('Incoming webhook: ' + JSON.stringify(req.body));
               console.log('si entro01')
-              // let body =     JSON.stringify(req.body)
-              // console.log('body',body)
+              let body =     JSON.stringify(req.body)
+               console.log('body',body)
               // console.log('phone_number_id',phone_number_id)
               // console.log('from',from)
               // console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
@@ -257,7 +257,7 @@ let controllers  = {
 
 
 
-
+                              res.status(200).send({"Msg":"send"})
 
                             }else{
                               return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
