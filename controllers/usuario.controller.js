@@ -257,7 +257,6 @@ let controllers  = {
 
 
 
-                              res.status(200).send({"Msg":"send"})
 
                             }else{
                               return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
