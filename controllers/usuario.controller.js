@@ -6,6 +6,8 @@ const axios = require('axios');
 
 const Chat  = require('../models/chatModel')
 
+const Listado = require('../models/listadoModel');
+
 //   let token = "EAAEYkh4JKI0BOxvCWFQMAl8KZBxKLAYXjmEP9Y2S8X4ojURIfePm4vshXwdG9Xl3qNgIVFI9z5hAaEyTFAInQDXcgzDsxFGqojYdZBFS5Oxv5wu34nC8HdOw4b3Xg9KR1zwZBE6GtnESEDWZBlSaSVkwbZA7ihgRkzC7fJvcDmsxzJ69NnkahVfZC4ea4SZA17yERvWWeSblJwp7DVR8ufQV6Y4kthbh1bvjygZD"
 
  //let token = 'EAAEYkh4JKI0BO7DAVK7ohJB6jm7AgffZBWZBxQM6E6G2uZBzy33kpxrqpuOOrEQ3eYRwgzi5atLWmrLHhmPwq9DC1gSSokvgxZCHgL9eXYOZAkAi5zI16tkpNQw3YAlrP8bBvuYCBqNLZBfYBfYEfY08ZB9lE8vjdID1vqXYRBIoSkmokKZC77LpPGmsoA9G6QhwZB2L2fHAhYLzWNCsZD'
@@ -233,6 +235,70 @@ let controllers  = {
                 chat.msg_body   = msg_body;
 
 
+                // {"object":"whatsapp_business_account",
+// "entry":[
+//     {
+//         "id":"249865991547503",
+//         "changes":[
+//             { "value":
+//                { "messaging_product":"whatsapp",
+//                  "metadata":
+//                  { "display_phone_number":"18496420776",
+//                     "phone_number_id":"208174665722024" },
+//                     "contacts":[
+//                         { "profile":{"name":"Hanck"},
+//                            "wa_id":"18093199970"}],
+//                             "messages":[
+//                                 { "from":"18093199970",
+//                                   "id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQTRBM0VCNTNBQjNGOTUyMTMwOAA=",
+//                                   "timestamp":"1715800580",
+//                                   "text":{"body":"Lo"},
+//                                   "type":"text"}]},
+//                                   "field":"messages"}]}]}
+
+
+                  // IdChat : un id para ambos, que sera el numero del cliente
+                  // nombre: req.body.entry[0].changes[0].value.metadata.contacts[0].profile.name
+                 // text[send:{
+                //  emisor:{
+                    //    messagesID:req.body.entry[0].changes[0].value.messages[0].id
+                        // numero:req.body.entry[0].changes[0].value.messages[0].from
+                //        
+                //        
+                      //   msgText:req.body.entry[0].changes[0].value.messages[0].text
+                        // timestamp:req.body.entry[0].changes[0].value.messages[0].timestamp
+                //     }
+                //    receptor:{
+                    // numero, req.body.entry[0].changes[0].value.metadata.display_phone_number
+
+                //    }
+                // }]
+
+                 let IdChat = from;
+                 console.log("From:",IdChat)
+                 let nombre = req.body.entry[0].changes[0].value.metadata.contacts[0].profile.name;
+                 console.log("nombre:",nombre)
+                 let  messagesID = req.body.entry[0].changes[0].value.messages[0].id;
+                 console.log("messagesID:",messagesID)
+                 let numero = req.body.entry[0].changes[0].value.messages[0].from;
+                 console.log("numero:",numero)
+                 let msgText = req.body.entry[0].changes[0].value.messages[0].text;
+                 console.log("msgText:",msgText)
+                 let timestamp = req.body.entry[0].changes[0].value.messages[0].timestamp;
+                 console.log("timestamp:",timestamp)
+                 let recptor = req.body.entry[0].changes[0].value.metadata.display_phone_number;
+
+
+
+
+
+
+
+
+
+
+
+
 
                     // let  output = await chat.save();
 
@@ -294,6 +360,24 @@ let controllers  = {
 
       }
       return next()
+      },
+
+
+      saveLista: function( req, res){
+
+        let params = req.body;
+        
+
+        let list = new Listado();
+
+         list.nombreLista = params.nombreLista
+         list.datos = params.datos
+
+        list.save().then((response)=> {
+          return res.status(200).send({response});
+        });
+            
+      
       }
 
 }
