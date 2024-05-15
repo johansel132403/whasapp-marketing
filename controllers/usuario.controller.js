@@ -276,7 +276,7 @@ let controllers  = {
 
                  let IdChat = from;
                  console.log("From:",IdChat)
-                 let nombre = req.body.entry[0].changes[0].value.metadata.contacts[0].profile.name;
+                 let nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
                  console.log("nombre:",nombre)
                  let  messagesID = req.body.entry[0].changes[0].value.messages[0].id;
                  console.log("messagesID:",messagesID)
