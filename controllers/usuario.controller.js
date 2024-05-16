@@ -276,18 +276,18 @@ let controllers  = {
 
                   chat.IdChat = from;
                 //  console.log("Idchat:",IdChat)
-                 let nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
-                 console.log("nombre:",nombre)
-                 let  messagesID = req.body.entry[0].changes[0].value.messages[0].id;
-                 console.log("messagesID:",messagesID)
-                 let numero = req.body.entry[0].changes[0].value.messages[0].from;
-                 console.log("numero:",numero)
-                 let msgText = req.body.entry[0].changes[0].value.messages[0].text;
-                 console.log("msgText:",msgText)
-                 let timestamp = req.body.entry[0].changes[0].value.messages[0].timestamp;
-                 console.log("timestamp:",timestamp)
-                 let recptor = req.body.entry[0].changes[0].value.metadata.display_phone_number;
-                 console.log("recptor:",recptor)
+                //  let nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
+                //  console.log("nombre:",nombre)
+                //  let  messagesID = req.body.entry[0].changes[0].value.messages[0].id;
+                //  console.log("messagesID:",messagesID)
+                //  let numero = req.body.entry[0].changes[0].value.messages[0].from;
+                //  console.log("numero:",numero)
+                //  let msgText = req.body.entry[0].changes[0].value.messages[0].text;
+                //  console.log("msgText:",msgText)
+                //  let timestamp = req.body.entry[0].changes[0].value.messages[0].timestamp;
+                //  console.log("timestamp:",timestamp)
+                //  let recptor = req.body.entry[0].changes[0].value.metadata.display_phone_number;
+                //  console.log("recptor:",recptor)
                      
 
                     let  output = await chat.save();
@@ -295,19 +295,31 @@ let controllers  = {
 
                 try{
 
-                      let chats = await Chat.find({"from":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
+                      let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
                                     return response;
                       });
 
                       if(chats){
                         console.log(chats)
 
+                        let datos = [{
+                          Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                          messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                         numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                         msgText:  req.body.entry[0].changes[0].value.messages[0].text,
+                         timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                        }]
+
                        chat.IdChat = from;
-                       chat.Emisor.Nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
-                       chat.Emisor.messagesID = req.body.entry[0].changes[0].value.messages[0].id;
-                       chat.Emisor.numero = req.body.entry[0].changes[0].value.messages[0].from;
-                       chat.Emisor.msgText = req.body.entry[0].changes[0].value.messages[0].text;
-                       chat.Emisor.timestamp =req.body.entry[0].changes[0].value.messages[0].timestamp;
+                       chat.Emisor = datos
+                      //  chat.Emisor.Nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
+                      //  chat.Emisor.messagesID = req.body.entry[0].changes[0].value.messages[0].id;
+                      //  chat.Emisor.numero = req.body.entry[0].changes[0].value.messages[0].from;
+                      //  chat.Emisor.msgText = req.body.entry[0].changes[0].value.messages[0].text;
+                      //  chat.Emisor.timestamp =req.body.entry[0].changes[0].value.messages[0].timestamp;
+
+
+
                         
                         // :[{
                         //     Nombre: String,
