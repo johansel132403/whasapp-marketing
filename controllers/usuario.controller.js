@@ -239,12 +239,19 @@ let controllers  = {
          
                 try{
 
-                      let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
-                                    return response;
-                      });
+                  let chats = false;
+
+                      // let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
+                      //               return response;
+                      // });
+
+                      let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                        return response;
+                        });
+
+                      console.log('confirm:', update)
 
                       if(chats){
-                       
 
                         let datos = [{
                           Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
@@ -258,45 +265,36 @@ let controllers  = {
                         chat.Emisor = datos
                      
                        let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
-                        return response;
+                                    return response;
                          });
 
                          if(update){
-                           return res.status(200).send({Mensaje:"Updated !"});
+                              return res.status(200).send({Mensaje:"Updated !"});
 
                          }
-
-
                        
 
                       }else{
 
+                                  // let datos = [{
+                                  // Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                                  // messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                                  // numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                                  // msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                                  // timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                                  // }]
 
-
-                                  let datos = [{
-                                    Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
-                                    messagesID: req.body.entry[0].changes[0].value.messages[0].id,
-                                  numero:  req.body.entry[0].changes[0].value.messages[0].from,
-                                  msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-                                  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
-                                  }]
-
-                                chat.IdChat = from;
-                                chat.Emisor = datos
+                                  // chat.IdChat = from;
+                                  // chat.Emisor = datos
                               
                                 
-                                  let  output = await chat.save();
-                                  return res.status(200).send({Mensaje:"Saved!"});
-                                  
+                                  // let  output = await chat.save();
+                                  // return res.status(200).send({Mensaje:"Saved!"});
+                            }
                       }
-
-
-
-                        
-                      }
-                catch(e){
-                    console.log(e);
-                };
+                  catch(e){
+                      console.log(e);
+                  };
 
                    
 
