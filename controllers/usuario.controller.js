@@ -436,8 +436,8 @@ let controllers  = {
 
               let chat = new Chat();
 
-              if(req.body.Emisor && req.body.Emisor[0] && req.body.Emisor[0].changes[0].nombre
-                 && req.body.Emisor[0] && req.body.Emisor[0].messagesID && req.body.Emisor[0].numero &&
+              if(req.body.Emisor && req.body.Emisor[0] && req.body.Emisor[0].nombre
+                 && req.body.Emisor[0] && req.body.Emisor[0].messagesID  &&
                  req.body.Emisor[0].msgText && req.body.Emisor[0].timestamp
 
               ){
