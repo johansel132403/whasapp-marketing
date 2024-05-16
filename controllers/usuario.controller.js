@@ -221,7 +221,7 @@ let controllers  = {
               //console.log('Incoming webhook: ' + JSON.stringify(req.body));
               console.log('si entro01')
               let body =     JSON.stringify(req.body)
-               console.log('body',body)
+             
               // console.log('phone_number_id',phone_number_id)
               // console.log('from',from)
               // console.log('msg_body',req.body.entry[0].changes[0].value.messages[0])
@@ -235,64 +235,8 @@ let controllers  = {
                 chat.msg_body   = msg_body;
 
 
-                // {"object":"whatsapp_business_account",
-// "entry":[
-//     {
-//         "id":"249865991547503",
-//         "changes":[
-//             { "value":
-//                { "messaging_product":"whatsapp",
-//                  "metadata":
-//                  { "display_phone_number":"18496420776",
-//                     "phone_number_id":"208174665722024" },
-//                     "contacts":[
-//                         { "profile":{"name":"Hanck"},
-//                            "wa_id":"18093199970"}],
-//                             "messages":[
-//                                 { "from":"18093199970",
-//                                   "id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQTRBM0VCNTNBQjNGOTUyMTMwOAA=",
-//                                   "timestamp":"1715800580",
-//                                   "text":{"body":"Lo"},
-//                                   "type":"text"}]},
-//                                   "field":"messages"}]}]}
-
-
-                  // IdChat : un id para ambos, que sera el numero del cliente
-                  // nombre: req.body.entry[0].changes[0].value.metadata.contacts[0].profile.name
-                 // text[send:{
-                //  emisor:{
-                    //    messagesID:req.body.entry[0].changes[0].value.messages[0].id
-                        // numero:req.body.entry[0].changes[0].value.messages[0].from
-                //        
-                //        
-                      //   msgText:req.body.entry[0].changes[0].value.messages[0].text
-                        // timestamp:req.body.entry[0].changes[0].value.messages[0].timestamp
-                //     }
-                //    receptor:{
-                    // numero, req.body.entry[0].changes[0].value.metadata.display_phone_number
-
-                //    }
-                // }]
-
                   chat.IdChat = from;
-                //  console.log("Idchat:",IdChat)
-                //  let nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
-                //  console.log("nombre:",nombre)
-                //  let  messagesID = req.body.entry[0].changes[0].value.messages[0].id;
-                //  console.log("messagesID:",messagesID)
-                //  let numero = req.body.entry[0].changes[0].value.messages[0].from;
-                //  console.log("numero:",numero)
-                //  let msgText = req.body.entry[0].changes[0].value.messages[0].text;
-                //  console.log("msgText:",msgText)
-                //  let timestamp = req.body.entry[0].changes[0].value.messages[0].timestamp;
-                //  console.log("timestamp:",timestamp)
-                //  let recptor = req.body.entry[0].changes[0].value.metadata.display_phone_number;
-                //  console.log("recptor:",recptor)
-                     
-
-                    // let  output = await chat.save();
-
-
+         
                 try{
 
                       let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
@@ -300,7 +244,7 @@ let controllers  = {
                       });
 
                       if(chats){
-                        console.log(chats)
+                       
 
                         let datos = [{
                           Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
