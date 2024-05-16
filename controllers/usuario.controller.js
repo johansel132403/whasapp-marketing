@@ -259,7 +259,13 @@ let controllers  = {
                         return response;
                         });
 
-                      console.log('confirm:', update)
+                        if(update){
+                          console.log('confirm:', update)
+                          return res.status(200).send({Mensaje:"Updated !"});
+
+                     }
+                   
+
 
                       if(chats){
 
