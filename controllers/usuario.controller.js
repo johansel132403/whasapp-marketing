@@ -419,7 +419,11 @@ let controllers  = {
 
       sendAndSavedMessage: async function( req, res, next){
 
-        console.log(req.body)
+        
+        if(IdChat){
+          console.log('IdChat',req.body)
+
+        }
     
 
         let d = false
