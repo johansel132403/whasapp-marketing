@@ -414,6 +414,68 @@ let controllers  = {
         });
             
       
+      },
+
+
+      sendAndSavedMessage: async function( req, res, next){
+
+        console.log(req.body)
+    
+
+        let d = false
+
+        if(d){
+            if( req.body.entry &&
+              req.body.entry[0].changes &&            
+              req.body.entry[0].changes[0] &&
+              req.body.entry[0].changes[0].value.messages &&
+              req.body.entry[0].changes[0].value.messages[0] ){
+
+              let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
+              let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
+              let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+
+              let chat = new Chat();
+
+              if(phone_number_id && from){
+
+         
+                      try{
+                              let datos = [{
+                                Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                                messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                              numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                              msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                              timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                              }]
+
+                            chat.IdChat = from;
+                              chat.Emisor = datos
+                              
+                            let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                              return response;
+                              });
+
+                              if(update !== null){
+                                      return res.status(200).send({Mensaje:"Updated !"});
+
+                              }else{
+                                          let  output = await chat.save();
+                                          return res.status(200).send({Mensaje:"Saved!"});
+                                    }
+                          }
+                      catch(e){
+                          console.log(e);
+                      };
+
+                                }else{
+                                  return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                                }
+            }
+
+      }
+      return next()
+        
       }
 
 }

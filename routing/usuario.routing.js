@@ -22,6 +22,7 @@ var controller = require('../controllers/usuario.controller');
     routing.get('/webhook',controller.receiveMessage);
     routing.post('/webhook',controller.receivPosteMessage);
     routing.post('/saveList',controller.saveLista);
+    routing.post('/sendandsavedmsg',controller.sendAndSavedMessage);
     
     
 
