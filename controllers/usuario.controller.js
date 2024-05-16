@@ -436,7 +436,7 @@ let controllers  = {
 
               let chat = new Chat();
 
-              if(phone_number_id && from){
+             
 
          
                       try{
@@ -467,12 +467,11 @@ let controllers  = {
                           console.log(e);
                       };
 
-                                }else{
-                                  return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
-                                }
-            
+                                
 
-      }
+            }else{
+              return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+            }
       return next()
         
       }
