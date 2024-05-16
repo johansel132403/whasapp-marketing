@@ -258,6 +258,7 @@ let controllers  = {
                       let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
                         return response;
                         });
+                        console.log('confirmcc:', update)
 
                         if(update){
                           console.log('confirm:', update)
