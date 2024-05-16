@@ -260,6 +260,13 @@ let controllers  = {
                        let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
                         return response;
                          });
+
+                         if(update){
+                           return res.status(200).send({Mensaje:"Updated !"});
+
+                         }
+
+
                        
 
                       }else{
@@ -279,7 +286,7 @@ let controllers  = {
                               
                                 
                                   let  output = await chat.save();
-
+                                  return res.status(200).send({Mensaje:"Saved!"});
                                   
                       }
 
