@@ -290,7 +290,7 @@ let controllers  = {
                 //  console.log("recptor:",recptor)
                      
 
-                    let  output = await chat.save();
+                    // let  output = await chat.save();
 
 
                 try{
@@ -313,7 +313,7 @@ let controllers  = {
                        chat.IdChat = from;
                         chat.Emisor = datos
                      
-                       let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},chat.Emisor).exec().then((response)=>{
+                       let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{"Emisor":datos}).exec().then((response)=>{
                         return response;
                          });
                        
