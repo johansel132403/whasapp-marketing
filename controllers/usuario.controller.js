@@ -428,13 +428,8 @@ let controllers  = {
 
         let d = false
 
-        if(d){
-            if( req.body.entry &&
-              req.body.entry[0].changes &&            
-              req.body.entry[0].changes[0] &&
-              req.body.entry[0].changes[0].value.messages &&
-              req.body.entry[0].changes[0].value.messages[0] ){
-
+        if(req.body.IdChat){
+       
               let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
               let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
               let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
@@ -446,15 +441,15 @@ let controllers  = {
          
                       try{
                               let datos = [{
-                                Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
-                                messagesID: req.body.entry[0].changes[0].value.messages[0].id,
-                              numero:  req.body.entry[0].changes[0].value.messages[0].from,
-                              msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-                              timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                                Nombre: req.body.Emisor[0].changes[0].nombre,
+                                messagesID: req.body.Emisor[0].messagesID,
+                              numero:  req.body.Emisor[0].numero,
+                              msgText:  req.body.Emisor[0].msgText,
+                              timestamp: req.body.Emisor[0].timestamp,
                               }]
 
-                            chat.IdChat = from;
-                              chat.Emisor = datos
+                            chat.IdChat = req.body.Emisor[0].numero;
+                              
                               
                             let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
                               return response;
@@ -475,7 +470,7 @@ let controllers  = {
                                 }else{
                                   return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
                                 }
-            }
+            
 
       }
       return next()
