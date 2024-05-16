@@ -420,7 +420,7 @@ let controllers  = {
       sendAndSavedMessage: async function( req, res, next){
 
         
-        if(IdChat){
+        if(req.body.IdChat){
           console.log('IdChat',req.body)
 
         }
