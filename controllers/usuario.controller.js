@@ -238,6 +238,16 @@ let controllers  = {
                   chat.IdChat = from;
          
                 try{
+                  let datos = [{
+                    Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                    messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                   numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                   msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                   timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                  }]
+
+                 chat.IdChat = from;
+                  chat.Emisor = datos
 
                   let chats = false;
 
