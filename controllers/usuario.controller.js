@@ -311,32 +311,35 @@ let controllers  = {
                         }]
 
                        chat.IdChat = from;
-                       chat.Emisor = datos
-                      //  chat.Emisor.Nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
-                      //  chat.Emisor.messagesID = req.body.entry[0].changes[0].value.messages[0].id;
-                      //  chat.Emisor.numero = req.body.entry[0].changes[0].value.messages[0].from;
-                      //  chat.Emisor.msgText = req.body.entry[0].changes[0].value.messages[0].text;
-                      //  chat.Emisor.timestamp =req.body.entry[0].changes[0].value.messages[0].timestamp;
+                       chat.Emisor = findOneAndUpdate
+                     
+                       let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},chat.Emisor).exec().then((response)=>{
+                        return response;
+                         });
+
+
+                         
+                       
+
+                      }else{
 
 
 
-                        
-                        // :[{
-                        //     Nombre: String,
-                        //     messagesID:String,
-                        //     numero: String,             
-                        //     msgText: String,
-                        //     timestamp: String
-                        // }],
-                        let  output = await chat.save();
+                                  let datos = [{
+                                    Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                                    messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                                  numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                                  msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                                  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                                  }]
 
-                        if(output){
-                          res.status(200).send(
-                            JSON.stringify(req.body)
-                 
-                           )
-                        }
+                                chat.IdChat = from;
+                                chat.Emisor = datos
+                              
+                                
+                                  let  output = await chat.save();
 
+                                  
                       }
 
 
