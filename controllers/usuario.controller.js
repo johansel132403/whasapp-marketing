@@ -420,14 +420,10 @@ let controllers  = {
       sendAndSavedMessage: async function( req, res, next){
 
         
-        if(req.body.IdChat){
-          console.log('IdChat',req.body)
+        // if(req.body.IdChat){
+        //   // console.log('IdChat',req.body)
 
-
-
-          console.log('msgText',req.body.Emisor[0].msgText)
-
-        }
+        // }
     
 
         let d = false
@@ -440,10 +436,17 @@ let controllers  = {
 
               let chat = new Chat();
 
+              if(req.body.Emisor && req.body.Emisor[0] && req.body.Emisor[0].changes[0].nombre
+                 && req.body.Emisor[0] && req.body.Emisor[0].messagesID && req.body.Emisor[0].numero &&
+                 req.body.Emisor[0].msgText && req.body.Emisor[0].timestamp
+
+              ){
+
+         
                       try{
                               let datos = [{
-                              Nombre: req.body.Emisor[0].changes[0].nombre,
-                              messagesID: req.body.Emisor[0].messagesID,
+                                Nombre: req.body.Emisor[0].changes[0].nombre,
+                                messagesID: req.body.Emisor[0].messagesID,
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
@@ -468,7 +471,10 @@ let controllers  = {
                           console.log(e);
                       };
 
-                                
+                                }else{
+                                  return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                                }
+            
 
             }else{
               return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
