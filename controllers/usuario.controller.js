@@ -311,14 +311,11 @@ let controllers  = {
                         }]
 
                        chat.IdChat = from;
-                       chat.Emisor = findOneAndUpdate
+                        chat.Emisor = datos
                      
                        let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},chat.Emisor).exec().then((response)=>{
                         return response;
                          });
-
-
-                         
                        
 
                       }else{
