@@ -425,7 +425,7 @@ let controllers  = {
 
 
 
-          console.log('messagesID',req.body.Emisor[0].messagesID)
+          console.log('msgText',req.body.Emisor[0].msgText)
 
         }
     
@@ -440,9 +440,6 @@ let controllers  = {
 
               let chat = new Chat();
 
-             
-
-         
                       try{
                               let datos = [{
                               Nombre: req.body.Emisor[0].changes[0].nombre,
