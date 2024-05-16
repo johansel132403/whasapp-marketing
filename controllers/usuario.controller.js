@@ -230,12 +230,12 @@ let controllers  = {
 
               if(phone_number_id && from){
 
-                chat.phone_number_id = phone_number_id;
-                chat.from  = from;
-                chat.msg_body   = msg_body;
+                // chat.phone_number_id = phone_number_id;
+                // chat.from  = from;
+                // chat.msg_body   = msg_body;
 
 
-                  chat.IdChat = from;
+                  // chat.IdChat = from;
          
                 try{
                   let datos = [{
