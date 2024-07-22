@@ -1,6 +1,6 @@
 
 let express  = require('express');
-
+let fileUpload = require('express-fileupload');
 
 // let controllers = require('./controllers/usuario.controller ')
 
@@ -9,13 +9,23 @@ const bodyparse = require('body-parser');
 
 
 
+
 //Cargar alchivos
 
 var usuario_routing = require('./routing/usuario.routing')
 
+
+// app.use(express.json({limit: '50mb'}));
+// app.use(express.urlencoded({limit: '50mb',}));
 //Middlewer
-app.use(bodyparse.urlencoded({extended:false}));
-app.use(bodyparse.json());
+app.use(bodyparse.urlencoded({extended:false,limit: '50mb'}));
+app.use(bodyparse.json({limit: '50mb'}));
+
+  //Middlewares 
+  app.use(fileUpload({
+      useTempFiles : true,
+      tempFileDir : './uploadss'
+  }));
 
 //CORS
 app.use((req, res, next) => {

@@ -6,6 +6,9 @@ const request = require('request');
 
 var controller = require('../controllers/usuario.controller');
 
+let multiparty = require('connect-multiparty');  //multiparty({uploadDir:"./uploads/user"})
+let multipartImg = multiparty({uploadDir: "./uploads/user"})
+
 // esto es para la autorizacion
 // var middlewer = require('../Middlewer/authentication');
 
@@ -23,6 +26,8 @@ var controller = require('../controllers/usuario.controller');
     routing.post('/webhook',controller.receivPosteMessage);
     routing.post('/saveList',controller.saveLista);
     routing.post('/sendandsavedmsg',controller.sendAndSavedMessage);
+    routing.get('/getchat/:id',controller.getMessage);
+    routing.post('/upluadimg',controller.sendImgByChat);
     
     
 

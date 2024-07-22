@@ -8,6 +8,10 @@ const Chat  = require('../models/chatModel')
 
 const Listado = require('../models/listadoModel');
 
+const {  uploadFileImgCloudinary, deleteImagenCloudinary } = require('../services/cloudinary');
+
+var fs = require('fs-extra');
+
 //   let token = "EAAEYkh4JKI0BOxvCWFQMAl8KZBxKLAYXjmEP9Y2S8X4ojURIfePm4vshXwdG9Xl3qNgIVFI9z5hAaEyTFAInQDXcgzDsxFGqojYdZBFS5Oxv5wu34nC8HdOw4b3Xg9KR1zwZBE6GtnESEDWZBlSaSVkwbZA7ihgRkzC7fJvcDmsxzJ69NnkahVfZC4ea4SZA17yERvWWeSblJwp7DVR8ufQV6Y4kthbh1bvjygZD"
 
  //let token = 'EAAEYkh4JKI0BO7DAVK7ohJB6jm7AgffZBWZBxQM6E6G2uZBzy33kpxrqpuOOrEQ3eYRwgzi5atLWmrLHhmPwq9DC1gSSokvgxZCHgL9eXYOZAkAi5zI16tkpNQw3YAlrP8bBvuYCBqNLZBfYBfYEfY08ZB9lE8vjdID1vqXYRBIoSkmokKZC77LpPGmsoA9G6QhwZB2L2fHAhYLzWNCsZD'
@@ -40,7 +44,7 @@ let controllers  = {
             url: 'https://odontoartesmilecenter.com/sistema/App/Api/v1/users.php?action=GetUsers',
             headers: {
                 Authorization: 'MjAyNC0wMi0wMS0x',
-                'Content-Type': 'application/json'
+                'Content-type': 'application/json'
 
             }
           };
@@ -48,13 +52,15 @@ let controllers  = {
           function callback(error, response, body) {
             if (!error && response.statusCode == 200) {
 
-            let bd  = body.substr(196)
+            let bd = body.substr()
 
-            let bdParse  = JSON.parse(bd)
+             let bdParse  = JSON.parse(bd)
+
+             console.log(bdParse)
 
              setTimeout(()=>{
                  res.status(200).send(
-                    bdParse
+                  bdParse
                  )
 
              },500)
@@ -481,9 +487,87 @@ let controllers  = {
             }
       return next()
         
+      },
+
+
+      getMessage( req, res ){
+
+
+        let paramsId = req.params.id;
+
+        console.log(paramsId)
+
+        Chat.findOne({"IdChat": paramsId})
+            .then((response) =>{
+
+              
+              console.log(response)
+              if(response){
+                return  res.status(200).send(response)
+              }
+     
+
+
+            })
+
+            .catch((err) => {
+              console.log(err)
+            })
+
+           
+  
+       
+     
+      },
+
+
+
+      async sendImgByChat( req, res){
+
+        console.log('c',req.files.imagen.tempFilePath)
+
+        if(req.files?.imagen){
+
+          var imgg = {
+              public_id: "",
+              secure_id: ""
+          } 
+  
+          try {
+              //listing messages in users mailbox                            
+              var imgRespon = await uploadFileImgCloudinary(req.files.imagen.tempFilePath)
+                
+                 imgg = {
+                  public_id: imgRespon.public_id,
+                  secure_url: imgRespon.secure_url
+              } 
+              
+              } catch (err) {
+                console.log(err);
+              }
+  
+          await fs.unlink(req.files.imagen.tempFilePath)
+            }
       }
 
+
+
+      
+        
+      
+
+
+
+
+
 }
+
+
+
+
+
+
+
 
 
 module.exports = controllers;
@@ -493,4 +577,4 @@ module.exports = controllers;
 
 // tengo que crear una temple
 //agegar un usuario
-//enviar mensaje a un user
+//enviar mensaje a un user   
