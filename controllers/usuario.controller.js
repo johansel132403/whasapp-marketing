@@ -8,7 +8,7 @@ const Chat  = require('../models/chatModel')
 
 const Listado = require('../models/listadoModel');
 
-const {  uploadFileImgCloudinary, deleteImagenCloudinary } = require('../services/cloudinary');
+const {  uploadFileImgCloudinary, deleteImagenCloudinary, uploadFileVideoCloudinary } = require('../services/cloudinary');
 
 var fs = require('fs-extra');
 
@@ -221,7 +221,7 @@ let controllers  = {
 
               let phone_number_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
               let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-              let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+              // let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
 
 
               //console.log('Incoming webhook: ' + JSON.stringify(req.body));
@@ -524,30 +524,76 @@ let controllers  = {
 
       async sendImgByChat( req, res){
 
-        console.log('c',req.files.imagen.tempFilePath)
+      
 
-        if(req.files?.imagen){
+        let file  = req.files.imagen.mimetype.split('/')
+        let nameFile = file[0]
+        
 
-          var imgg = {
-              public_id: "",
-              secure_id: ""
-          } 
-  
-          try {
-              //listing messages in users mailbox                            
-              var imgRespon = await uploadFileImgCloudinary(req.files.imagen.tempFilePath)
-                
-                 imgg = {
-                  public_id: imgRespon.public_id,
-                  secure_url: imgRespon.secure_url
+        switch (nameFile) {
+          case 'image':
+
+
+            if(req.files?.imagen){
+    
+              var imgg = {
+                  public_id: "",
+                  secure_id: ""
               } 
-              
-              } catch (err) {
-                console.log(err);
-              }
-  
-          await fs.unlink(req.files.imagen.tempFilePath)
-            }
+      
+              try {
+                  //listing messages in users mailbox                            
+                  var imgRespon = await uploadFileImgCloudinary(req.files.imagen.tempFilePath)
+                    
+                     imgg = {
+                      public_id: imgRespon.public_id,
+                      secure_url: imgRespon.secure_url
+                  } 
+
+                  console.log('File',imgg)
+                  
+                  } catch (err) {
+                    console.log(err);
+                  }
+      
+              await fs.unlink(req.files.imagen.tempFilePath)
+                }
+            
+              break;
+        
+            case 'video':
+
+
+            if(req.files?.imagen){
+    
+              var imgg = {
+                  public_id: "",
+                  secure_id: ""
+              } 
+      
+              try {
+                  //listing messages in users mailbox                            
+                  var imgRespon = await uploadFileVideoCloudinary(req.files.imagen.tempFilePath)
+                    
+                     imgg = {
+                      public_id: imgRespon.public_id,
+                      secure_url: imgRespon.secure_url
+                  } 
+                  
+                  } catch (err) {
+                    console.log(err);
+                  }
+      
+              await fs.unlink(req.files.imagen.tempFilePath)
+                }
+
+
+            break;
+
+          default:
+            break;
+        }
+
       }
 
 
