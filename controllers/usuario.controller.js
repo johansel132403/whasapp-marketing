@@ -206,6 +206,7 @@ let controllers  = {
         // req.body {"object":"whatsapp_business_account","entry":[{"id":"249865991547503","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"18496420776","phone_number_id":"208174665722024"},"contacts":[{"profile":{"name":"Hanck"},"wa_id":"18093199970"}],"messages":[{"from":"18093199970","id":"wamid.HBgLMTgwOTMxOTk5NzAVAgASGBQzQUQzNkQ0MTQwNEVFNDY1N0JCRQA=","timestamp":"1713813794","text":{"body":"B"},"type":"text"}]},"field":"messages"}]}]}
 
         if(req.body.object){
+          let io = require('../index');
           // let body =     JSON.stringify(req.body)
           // let obj = JSON.parse(body);
 
@@ -245,7 +246,9 @@ let controllers  = {
 
                   // chat.IdChat = from;
                   // Enviar el mensaje recibido a todos los clientes conectados
-                                 let io = require('../index');
+                  console.log('si entro03')
+                                    io.on('connection', async (socket) => {
+                                      console.log('si entro04')
          
                 try{
                   let datos = [{
@@ -263,12 +266,10 @@ let controllers  = {
                   let idd= "";
 
 
-                                    io.on('connection',(socket) => {
-                                      console.log('si entro03')
 
                                    
                                       socket.emit('newMessage', { from, datos });  
-                                    });
+                                  
 
 
 
@@ -335,6 +336,8 @@ let controllers  = {
                   catch(e){
                       console.log(e);
                   };
+
+                });
 
                    
 
