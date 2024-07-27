@@ -16,7 +16,7 @@ var fs = require('fs-extra');
 
  //let token = 'EAAEYkh4JKI0BO7DAVK7ohJB6jm7AgffZBWZBxQM6E6G2uZBzy33kpxrqpuOOrEQ3eYRwgzi5atLWmrLHhmPwq9DC1gSSokvgxZCHgL9eXYOZAkAi5zI16tkpNQw3YAlrP8bBvuYCBqNLZBfYBfYEfY08ZB9lE8vjdID1vqXYRBIoSkmokKZC77LpPGmsoA9G6QhwZB2L2fHAhYLzWNCsZD'
 
-  let io = require('../index');
+  // let io = require('../index');
 
 
    let token ="EAAEYkh4JKI0BO5N27NOZC5JVqqLKiNDKXjeY900hhIMIZB7swxEttAPErX9aQ8hJSbSQxUEgvHXzb4z10NvDwqRYU042dr8WwEgejTov4wbctfIMNIcIJVlM30mqW1iayFHrwQojy4ZCcEZCZCyXaxY1w2xfHd2j15W1gkXWI7Ba62bKuBTPu3oRzFzZB855P2VQn7l0lw0wDOqolH";
@@ -260,7 +260,15 @@ let controllers  = {
                   let idd= "";
 
                     // Enviar el mensaje recibido a todos los clientes conectados
-                     io.emit('newMessage', { from, datos });  
+                                   let io = require('../index');
+
+                                    io.on('connection',(socket) => {
+                                   
+                                      io.emit('newMessage', { from, datos });  
+                                    });
+
+
+
 
                       // let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
                       //               return response;
