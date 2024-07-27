@@ -247,7 +247,7 @@ let controllers  = {
                                 //  let io = require('../index');
          
                 try{
-                  let datos = [{
+                  let body = [{
                     Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
                     messagesID: req.body.entry[0].changes[0].value.messages[0].id,
                    numero:  req.body.entry[0].changes[0].value.messages[0].from,
@@ -265,7 +265,7 @@ let controllers  = {
 
                   console.log('si entro03')
                                  
-                                    io.emit('newMessage', { from, datos });  
+                                    io.emit('newMessage', { from, body });  
 
 
 
