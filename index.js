@@ -20,7 +20,17 @@ let server = app.listen(port,()=>{
     console.log('El puerto de 3700, ya esta listo..');
 })    
 
-var io =  socketio(server)
+var io =  socketio(server,{
+    cors:{
+        origins:['http://localhost:4200','http://localhost'],
+        methods: ["GET", "POST"],
+      
+    },
+
+    forceNew: true,
+    // transports: ["polling"],   //   
+    
+})
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
