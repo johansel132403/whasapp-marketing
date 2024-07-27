@@ -244,6 +244,8 @@ let controllers  = {
 
 
                   // chat.IdChat = from;
+                  // Enviar el mensaje recibido a todos los clientes conectados
+                                 let io = require('../index');
          
                 try{
                   let datos = [{
@@ -260,8 +262,6 @@ let controllers  = {
                   // const from = req.body;
                   let idd= "";
 
-                    // Enviar el mensaje recibido a todos los clientes conectados
-                                   let io = require('../index');
 
                                     io.on('connection',(socket) => {
                 console.log('si entro03')
