@@ -240,6 +240,7 @@ let controllers  = {
                 // chat.phone_number_id = phone_number_id;
                 // chat.from  = from;
                 // chat.msg_body   = msg_body;
+                console.log('si entro02')
 
 
                   // chat.IdChat = from;
@@ -263,6 +264,8 @@ let controllers  = {
                                    let io = require('../index');
 
                                     io.on('connection',(socket) => {
+                console.log('si entro03')
+
                                    
                                       io.emit('newMessage', { from, datos });  
                                     });
