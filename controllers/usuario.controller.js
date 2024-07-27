@@ -263,7 +263,7 @@ let controllers  = {
 
                   const io = require('../index');
 
-                  console.log('si entro03',io)
+                  console.log('si entro03')
                                  
                                     io.emit('newMessage', { from, datos });  
 
