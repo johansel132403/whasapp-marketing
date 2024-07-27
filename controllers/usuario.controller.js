@@ -264,7 +264,7 @@ let controllers  = {
                   const io = require('../index');
 
                   console.log('si entro03',io)
-                                    io.socket.on('connection',(socket) => {
+                                    io.on('connection',(socket) => {
                                       console.log('si entro04')
 
                                       socket.emit('newMessage', { from, datos });  
