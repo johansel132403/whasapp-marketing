@@ -1,7 +1,11 @@
 
+require('dotenv').config({path: 'variables.env'});
+
+
 let mongoose = require('mongoose');
 let app = require('./app');
-require('dotenv').config({path: 'variable.env'});
+
+
 
 let port = process.env.PORT || 3000;
 //ESTO ES PARA CONECTARNOS A MONGOOSE POR MEDIO DE LAS PROMESAS
@@ -28,6 +32,17 @@ var io =  socketio(server,{
     // transports: ["polling"],   //   
     
 })
+
+// Manejar eventos de conexión de WebSocket
+io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado');
+
+    // Manejar la desconexión
+    socket.on('disconnect', () => {
+        console.log('Cliente desconectado');
+    });
+});
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )

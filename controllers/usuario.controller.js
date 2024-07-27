@@ -253,9 +253,12 @@ let controllers  = {
                   }]
 
                  chat.IdChat = from;
-                  chat.Emisor = datos
+                  chat.Emisor = datos;
 
-                 
+                  const from = req.body.From;
+
+                    // Enviar el mensaje recibido a todos los clientes conectados
+                     io.emit('newMessage', { from, datos });  
 
                       // let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
                       //               return response;
@@ -501,7 +504,7 @@ let controllers  = {
             .then((response) =>{
 
               
-              console.log(response)
+           
               if(response){
                 return  res.status(200).send(response)
               }

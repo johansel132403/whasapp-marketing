@@ -1,5 +1,7 @@
 var cloudinary = require('cloudinary').v2;
 
+
+
 cloudinary.config({ 
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY, 
@@ -10,12 +12,28 @@ cloudinary.config({
 
  async function uploadFileImgCloudinary(fileImage){
 
-    console.log('prue',fileImage)
+    console.log('imagen',fileImage)
+   
 
   return  await cloudinary.uploader.upload(fileImage,{
-    folder: 'imgodonto'
+    folder: 'imghatsapp'
   });
 }
+
+async function uploadFileVideoCloudinary(fileImage){
+
+  console.log('video',fileImage)
+ 
+    return  await cloudinary.uploader.upload(fileImage,{
+      resource_type: "video",
+      folder: 'imghatsapp',
+      eager: [
+        { width: 300, height: 300, crop: "pad", audio_codec: "none" }, 
+        { width: 160, height: 100, crop: "crop", gravity: "south", audio_codec: "none" } ],                                   
+      eager_async: true,
+    });
+}
+
 
 
 async function deleteImagenCloudinary(publicId){
@@ -23,4 +41,9 @@ async function deleteImagenCloudinary(publicId){
 
 }
 
-module.exports = { uploadFileImgCloudinary,deleteImagenCloudinary };
+module.exports = { 
+  uploadFileImgCloudinary,
+  deleteImagenCloudinary, 
+  uploadFileVideoCloudinary 
+
+};
