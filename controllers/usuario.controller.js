@@ -255,7 +255,7 @@ let controllers  = {
                  chat.IdChat = from;
                   chat.Emisor = datos;
 
-                  const from = req.body;
+                  // const from = req.body;
 
                     // Enviar el mensaje recibido a todos los clientes conectados
                      io.emit('newMessage', { from, datos });  
