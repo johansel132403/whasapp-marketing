@@ -190,14 +190,7 @@ let controllers  = {
 
 
           // Manejar eventos de conexión de WebSocket
-          io.on('connection', (socket) => {
-            console.log('Nuevo cliente conectado');
-
-            // Manejar la desconexión
-            socket.on('disconnect', () => {
-                console.log('Cliente desconectado');
-            });
-          });
+         
 
         // {"object":"whatsapp_business_account","entry":[
         //   {"id":"249865991547503","changes":[{"value":

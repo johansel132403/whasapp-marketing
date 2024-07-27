@@ -33,7 +33,15 @@ var io =  socketio(server,{
     
 })
 
+// Manejar eventos de conexión de WebSocket
+io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado');
 
+    // Manejar la desconexión
+    socket.on('disconnect', () => {
+        console.log('Cliente desconectado');
+    });
+});
 
 
 mongoose.Promise = global.Promise;
