@@ -264,12 +264,12 @@ let controllers  = {
 
 
                   console.log('si entro03')
-                                    // io.on('connection',(socket) => {
-                                    //   console.log('si entro04')
+                                    io.on('connection',(socket) => {
+                                      console.log('si entro04')
 
+                                      socket.emit('newMessage', { from, datos });  
                                    
-                                    // });
-                                    io.emit('newMessage', { from, datos });  
+                                    });
 
 
 
