@@ -32,6 +32,15 @@ var io =  socketio(server,{
     
 })
 
+io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado');
+
+    // Manejar la desconexión
+    socket.on('disconnect', () => {
+        console.log('Cliente desconectado');
+    });
+});
+
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
         .then(()  =>{
