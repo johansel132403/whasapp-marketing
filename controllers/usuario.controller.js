@@ -269,7 +269,7 @@ let controllers  = {
 
                                    
                                     // });
-                                    socket.emit('newMessage', { from, datos });  
+                                    io.emit('newMessage', { from, datos });  
 
 
 
