@@ -1,7 +1,6 @@
 
 require('dotenv').config({path: 'variables.env'});
 
-
 let mongoose = require('mongoose');
 let app = require('./app');
 
@@ -32,19 +31,6 @@ var io =  socketio(server,{
     // transports: ["polling"],   //   
     
 })
-
-// Manejar eventos de conexión de WebSocket
-// io.on('connection', (socket) => {
-//     console.log('Nuevo cliente conectado');
-
-//     // Manejar la desconexión
-//     socket.on('disconnect', () => {
-//         console.log('Cliente desconectado');
-//     });
-// });
-
-    require('./controllers/usuario.controller')(io);
-
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true } )
