@@ -246,13 +246,14 @@ let controllers  = {
                   // Enviar el mensaje recibido a todos los clientes conectados
                                 //  let io = require('../index');
          
+                 var date =new Date();
                 try{
                   let body = [{
                     nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
                     messagesID: req.body.entry[0].changes[0].value.messages[0].id,
                    numero:  req.body.entry[0].changes[0].value.messages[0].from,
                    msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-                   timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                   timestamp: date.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true }),
                   }]
 
                  chat.IdChat = from;
