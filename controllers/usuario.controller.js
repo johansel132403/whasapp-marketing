@@ -248,7 +248,7 @@ let controllers  = {
          
                 try{
                   let body = [{
-                    Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                    nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
                     messagesID: req.body.entry[0].changes[0].value.messages[0].id,
                    numero:  req.body.entry[0].changes[0].value.messages[0].from,
                    msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
