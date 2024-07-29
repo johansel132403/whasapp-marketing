@@ -464,7 +464,7 @@ let controllers  = {
          
                       try{
                               let datos = [{
-                                Nombre: req.body.Emisor[0].nombre,
+                                nombre: req.body.Emisor[0].nombre,
                                 messagesID: req.body.Emisor[0].messagesID,
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
