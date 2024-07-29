@@ -11,7 +11,7 @@ let userSchema = Schema({
 
     IdChat: String,   
     Emisor:[{
-        Nombre: String,
+        nombre: String,
         messagesID:String,
         numero: String,             
         msgText: String,
