@@ -252,7 +252,7 @@ let controllers  = {
                    var datetime = new Date(timestamp * 1000);
                    console.log('hora ',datetime)
 
-                  var hora =  date.toLocaleString('en-US',{timeZone:"America/New_York"}, { hour: 'numeric',minute: 'numeric', hour12: true });
+                  var hora =  date.toLocaleString('en-US', {timeZone:"America/New_York", hour: 'numeric',minute: 'numeric', hour12: true });
 
                   console.log('hora02', hora)
 
