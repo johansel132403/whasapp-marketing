@@ -252,7 +252,7 @@ let controllers  = {
                    var datetime = new Date(timestamp * 1000);
                    console.log('hora ',datetime)
 
-                  var hora =  date.toLocaleString('en-US', {timeZone:"America/New_York", hour: 'numeric',minute: 'numeric', hour12: true });
+                  var hora =  date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true });
 
                   console.log('hora02', hora)
 
@@ -269,7 +269,7 @@ let controllers  = {
 		             	
                   //  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
 
-                    timestamp: date.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true }),
+                    timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true });
 
               
                   }]
