@@ -247,13 +247,31 @@ let controllers  = {
                                 //  let io = require('../index');
          
                  var date =new Date();
+                                    
+                   let timestamp =  req.body.entry[0].changes[0].value.messages[0].timestamp;
+                   var datetime = new Date(timestamp * 1000);
+                   console.log('hora ',datetime)
+
+                  var hora =  date.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true });
+
+                  console.log('hora02', hora)
+
+                
+
+
+
                 try{
                   let body = [{
                     nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
                     messagesID: req.body.entry[0].changes[0].value.messages[0].id,
                    numero:  req.body.entry[0].changes[0].value.messages[0].from,
                    msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-                   timestamp: date.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true }),
+		             	
+                   timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+
+                  //  timestamp: date.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true }),
+
+              
                   }]
 
                  chat.IdChat = from;
