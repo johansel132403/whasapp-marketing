@@ -269,7 +269,7 @@ let controllers  = {
 		             	
                   //  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
 
-                    timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true });
+                    timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true })
 
               
                   }]
