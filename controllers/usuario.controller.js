@@ -606,6 +606,7 @@ let controllers  = {
               try {
                   //listing messages in users mailbox                            
                   var imgRespon = await uploadFileVideoCloudinary(req.files.imagen.tempFilePath)
+                  console.log('Cloudinary: ',imgRespon)
                     
                      imgg = {
                       public_id: imgRespon.public_id,
