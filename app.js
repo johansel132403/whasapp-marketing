@@ -1,11 +1,12 @@
 
 let express  = require('express');
+const bodyparse = require('body-parser');
+
 let fileUpload = require('express-fileupload');
 
 // let controllers = require('./controllers/usuario.controller ')
 
 var app = express();
-const bodyparse = require('body-parser');
 
 
 

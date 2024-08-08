@@ -556,6 +556,7 @@ let controllers  = {
 
       async sendImgByChat( req, res){
 
+        console.log("reqFile",req.files)
       
 
         let file  = req.files.imagen.mimetype.split('/')
@@ -574,6 +575,7 @@ let controllers  = {
               } 
       
               try {
+                console.log("reqFile",req.files.imagen.tempFilePath)
                   //listing messages in users mailbox                            
                   var imgRespon = await uploadFileImgCloudinary(req.files.imagen.tempFilePath)
                     
