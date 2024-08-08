@@ -578,6 +578,8 @@ let controllers  = {
                 console.log("reqFile",req.files.imagen.tempFilePath)
                   //listing messages in users mailbox                            
                   var imgRespon = await uploadFileImgCloudinary(req.files.imagen.tempFilePath)
+
+                  console.log('resp: ', imgRespon)
                     
                      imgg = {
                       public_id: imgRespon.public_id,
