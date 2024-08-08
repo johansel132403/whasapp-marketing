@@ -586,6 +586,9 @@ let controllers  = {
                       secure_url: imgRespon.secure_url
                   } 
 
+                  if(imgRespon){
+                   return  res.status(200).send(response)
+                  }
                   console.log('File',imgg)
                   
                   } catch (err) {
