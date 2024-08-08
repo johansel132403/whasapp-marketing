@@ -587,7 +587,7 @@ let controllers  = {
                   } 
 
                   if(imgRespon){
-                   return  res.status(200).send({"img":imgg})
+                   return  res.status(200).send(imgg)
                   }
                   console.log('File',imgg)
                   
