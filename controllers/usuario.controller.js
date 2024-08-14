@@ -611,7 +611,9 @@ let controllers  = {
                                             
                                             
                                           let update = await Chat.findOneAndUpdate({"IdChat":"18093199970"},{$push:{"Emisor":datos}}).exec().then((response)=>{
-                                            return response;
+                                            
+                                              return  res.status(200).send(imgg)
+                                            
                                             });
               
                                             if(update !== null){
@@ -635,7 +637,7 @@ let controllers  = {
 
 
 
-                   return  res.status(200).send(imgg)
+                  //  return  res.status(200).send(imgg)
                   }
                   console.log('File',imgg)
                   
