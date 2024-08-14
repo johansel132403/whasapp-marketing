@@ -15,7 +15,8 @@ let userSchema = Schema({
         messagesID:String,
         numero: String,             
         msgText: String,
-        timestamp: String
+        timestamp: String,
+        imagen: String,
     }],
    
 

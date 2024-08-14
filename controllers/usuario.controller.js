@@ -587,6 +587,54 @@ let controllers  = {
                   } 
 
                   if(imgRespon){
+
+
+
+
+
+                            let chat = new Chat();
+
+                            if(imgRespon){
+              
+                      
+                                    try{
+                                            let datos = [{
+                                              nombre: "Admin",
+                                              messagesID:'',
+                                            numero:  '',
+                                            msgText:  '',
+                                            timestamp: '',
+                                            imagen:imgg.secure_url
+                                            }]
+              
+                                          chat.IdChat = req.body.Emisor[0].numero;
+                                            
+                                            
+                                          let update = await Chat.findOneAndUpdate({"IdChat":req.body.Emisor[0].numero},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                                            return response;
+                                            });
+              
+                                            if(update !== null){
+                                                    return res.status(200).send({Mensaje:"Updated !"});
+              
+                                            }else{
+                                                        let  output = await chat.save();
+                                                        return res.status(200).send({Mensaje:"Saved!"});
+                                                  }
+                                        }
+                                    catch(e){
+                                        console.log(e);
+                                    };
+              
+                                              }else{
+                                                return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                                              }
+                          
+
+
+
+
+
                    return  res.status(200).send(imgg)
                   }
                   console.log('File',imgg)
@@ -594,8 +642,8 @@ let controllers  = {
                   } catch (err) {
                     console.log(err);
                   }
-      
-              await fs.unlink(req.files.imagen.tempFilePath)
+                  
+                  await fs.unlink(req.files.imagen.tempFilePath)
                 }
             
               break;
