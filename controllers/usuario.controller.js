@@ -610,7 +610,7 @@ let controllers  = {
                                           chat.IdChat = '18093199970';
                                             
                                             
-                                          let update = await Chat.findOneAndUpdate({"IdChat":req.body.Emisor[0].numero},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                                          let update = await Chat.findOneAndUpdate({"IdChat":"18093199970"},{$push:{"Emisor":datos}}).exec().then((response)=>{
                                             return response;
                                             });
               
