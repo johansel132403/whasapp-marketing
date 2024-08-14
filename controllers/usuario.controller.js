@@ -9,7 +9,6 @@ const Chat  = require('../models/chatModel')
 const Listado = require('../models/listadoModel');
 
 const {  uploadFileImgCloudinary, deleteImagenCloudinary, uploadFileVideoCloudinary } = require('../services/cloudinary');
-const cloudinary = require('cloudinary').v2;
 
 var fs = require('fs-extra');
 
@@ -587,17 +586,9 @@ let controllers  = {
                       secure_url: imgRespon.secure_url
                   } 
 
-                  
-                  
                   if(imgRespon){
-                    
-                    // Optimize delivery by resizing and applying auto-format and auto-quality
-                    const optimizeUrl = cloudinary.url(imgg.public_id, {
-                      fetch_format: 'auto',
-                      quality: 'auto'
-                    });
-                    
-                    console.log(optimizeUrl);
+
+
 
 
 
@@ -613,30 +604,30 @@ let controllers  = {
                                             numero:  '',
                                             msgText:  '',
                                             timestamp: '',
-                                            imagen:optimizeUrl
+                                            imagen:imgg.secure_url
                                             }]
               
                                           chat.IdChat = '18093199970';
                                             
                                             
-                                          let update = await Chat.findOneAndUpdate({"IdChat":'18093199970'},{$push:{"Emisor":datos}}).exec().then((response)=>{
-                                             response;
+                                          let update = await Chat.findOneAndUpdate({"IdChat":req.body.Emisor[0].numero},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                                            return response;
                                             });
               
-                                            // if(update !== null){
-                                            //        return   res.status(200).send({Mensaje:"Updated !"});
+                                            if(update !== null){
+                                                    return res.status(200).send({Mensaje:"Updated !"});
               
-                                            // }else{
-                                            //             let  output = await chat.save();
-                                            //         return    res.status(200).send({Mensaje:"Saved!"});
-                                            //       }
+                                            }else{
+                                                        let  output = await chat.save();
+                                                        return res.status(200).send({Mensaje:"Saved!"});
+                                                  }
                                         }
                                     catch(e){
                                         console.log(e);
                                     };
               
                                               }else{
-                                                res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                                                return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
                                               }
                           
 
