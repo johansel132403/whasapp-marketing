@@ -586,9 +586,17 @@ let controllers  = {
                       secure_url: imgRespon.secure_url
                   } 
 
+                  
+                  
                   if(imgRespon){
-
-
+                    
+                    // Optimize delivery by resizing and applying auto-format and auto-quality
+                    const optimizeUrl = cloudinary.url(imgg.public_id, {
+                      fetch_format: 'auto',
+                      quality: 'auto'
+                    });
+                    
+                    console.log(optimizeUrl);
 
 
 
