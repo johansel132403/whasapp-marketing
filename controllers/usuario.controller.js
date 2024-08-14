@@ -616,13 +616,13 @@ let controllers  = {
                                             
                                             });
               
-                                            if(update !== null){
-                                                    return res.status(200).send({Mensaje:"Updated !"});
+                                            // if(update !== null){
+                                            //         return res.status(200).send({Mensaje:"Updated !"});
               
-                                            }else{
-                                                        let  output = await chat.save();
-                                                        return res.status(200).send({Mensaje:"Saved!"});
-                                                  }
+                                            // }else{
+                                            //             let  output = await chat.save();
+                                            //             return res.status(200).send({Mensaje:"Saved!"});
+                                            //       }
                                         }
                                     catch(e){
                                         console.log(e);
