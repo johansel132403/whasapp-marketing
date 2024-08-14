@@ -613,22 +613,22 @@ let controllers  = {
                                             numero:  '',
                                             msgText:  '',
                                             timestamp: '',
-                                            imagen:imgg.secure_url
+                                            imagen:optimizeUrl
                                             }]
               
                                           chat.IdChat = '18093199970';
                                             
                                             
                                           let update = await Chat.findOneAndUpdate({"IdChat":'18093199970'},{$push:{"Emisor":datos}}).exec().then((response)=>{
-                                            return response;
+                                             response;
                                             });
               
                                             if(update !== null){
-                                                    return res.status(200).send({Mensaje:"Updated !"});
+                                                     res.status(200).send({Mensaje:"Updated !"});
               
                                             }else{
                                                         let  output = await chat.save();
-                                                        return res.status(200).send({Mensaje:"Saved!"});
+                                                         res.status(200).send({Mensaje:"Saved!"});
                                                   }
                                         }
                                     catch(e){
@@ -636,7 +636,7 @@ let controllers  = {
                                     };
               
                                               }else{
-                                                return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                                                res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
                                               }
                           
 
