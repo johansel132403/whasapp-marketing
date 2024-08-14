@@ -593,7 +593,7 @@ let controllers  = {
 
  // Optimize delivery by resizing and applying auto-format and auto-quality
  
- console.log(optimizeUrl);
+
  
  
                             let chat = new Chat();
