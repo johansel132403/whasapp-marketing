@@ -9,6 +9,7 @@ const Chat  = require('../models/chatModel')
 const Listado = require('../models/listadoModel');
 
 const {  uploadFileImgCloudinary, deleteImagenCloudinary, uploadFileVideoCloudinary } = require('../services/cloudinary');
+import { v2 as cloudinary } from 'cloudinary';
 
 var fs = require('fs-extra');
 
