@@ -10,6 +10,8 @@ const Listado = require('../models/listadoModel');
 
 const {  uploadFileImgCloudinary, deleteImagenCloudinary, uploadFileVideoCloudinary } = require('../services/cloudinary');
 
+const cloudinary = require('cloudinary').v2
+
 var fs = require('fs-extra');
 
 //   let token = "EAAEYkh4JKI0BOxvCWFQMAl8KZBxKLAYXjmEP9Y2S8X4ojURIfePm4vshXwdG9Xl3qNgIVFI9z5hAaEyTFAInQDXcgzDsxFGqojYdZBFS5Oxv5wu34nC8HdOw4b3Xg9KR1zwZBE6GtnESEDWZBlSaSVkwbZA7ihgRkzC7fJvcDmsxzJ69NnkahVfZC4ea4SZA17yERvWWeSblJwp7DVR8ufQV6Y4kthbh1bvjygZD"
@@ -589,13 +591,19 @@ let controllers  = {
                   if(imgRespon){
 
 
-
-
-
+ // Optimize delivery by resizing and applying auto-format and auto-quality
+ 
+ console.log(optimizeUrl);
+ 
+ 
                             let chat = new Chat();
-
+ 
                             if(imgRespon){
-              
+                              
+                              const optimizeUrl = cloudinary.url(imgg.public_id, {
+                                fetch_format: 'auto',
+                                quality: 'auto'
+                              });
                       
                                     try{
                                             let datos = [{
@@ -604,7 +612,7 @@ let controllers  = {
                                             numero:  '',
                                             msgText:  '',
                                             timestamp: '',
-                                            imagen:imgg.secure_url
+                                            imagen:optimizeUrl
                                             }]
               
                                           chat.IdChat = '18093199970';
