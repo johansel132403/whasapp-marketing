@@ -250,16 +250,18 @@ let controllers  = {
          
                  var date =new Date();
                                     
-                   let timestamp =  req.body.entry[0].changes[0].value.messages[0].timestamp;
-                   var datetime = new Date(timestamp * 1000);
-                   console.log('hora ',datetime)
+                  //  let timestamp =  req.body.entry[0].changes[0].value.messages[0].timestamp;
+                  //  var datetime = new Date(timestamp * 1000);
+                 
 
                   var hora =  date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true });
 
-                  console.log('hora02', hora)
+               
 
-                
-
+                  var date =new Date();
+                  let fechaCompleta = date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            
+                  let currentDate = `${hora} - ${fechaCompleta}`
 
 
                 try{
@@ -271,8 +273,8 @@ let controllers  = {
 		             	
                   //  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
 
-                    timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true })
-
+                    // timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true })
+                    timestamp: currentDate
               
                   }]
 
