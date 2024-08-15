@@ -16,7 +16,9 @@ cloudinary.config({
    
 
   return  await cloudinary.uploader.upload(fileImage,{
-    folder: 'imghatsapp'
+    folder: 'imghatsapp',
+    width: 2000, height: 2000, crop: 'limit', tags: "mobile_upload",
+
   });
 }
 
