@@ -600,10 +600,23 @@ let controllers  = {
  
                             if(imgRespon){
                               
-                              const optimizeUrl = cloudinary.url(imgg.public_id, {
-                                fetch_format: 'auto',
-                                quality: 'auto'
+                              // const optimizeUrl = cloudinary.url(imgg.public_id, {
+                              //   fetch_format: 'auto',
+                              //   quality: 'auto'
+                              // });
+
+
+                              const optimizeUrl = cloudinary.url(imgg.secure_url, {
+                                width: 800, // Redimensionar a 800 píxeles de ancho
+                                height: 800, // Redimensionar a 800 píxeles de alto
+                                crop: 'fit', // Ajustar para encajar en el tamaño especificado
+                                quality: 'auto', // Optimizar automáticamente la calidad
+                                fetch_format: 'auto' // Determinar automáticamente el formato óptimo (JPEG, PNG, WebP)
                               });
+
+
+
+
                       
                                     try{
                                             let datos = [{
