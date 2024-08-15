@@ -616,6 +616,7 @@ let controllers  = {
 
 
 
+                              console.log('optimizen',optimizeUrl)
 
                       
                                     try{
