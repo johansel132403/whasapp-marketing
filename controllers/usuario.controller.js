@@ -459,6 +459,25 @@ let controllers  = {
       },
 
 
+      
+      getLista: function( req, res){
+
+  
+        list.find.then((response)=> {
+          return res.status(200).send({response});
+        });
+            
+      
+      },
+
+
+
+
+
+
+
+
+
       sendAndSavedMessage: async function( req, res, next){
 
         
