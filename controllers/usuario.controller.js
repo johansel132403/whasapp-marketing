@@ -577,6 +577,9 @@ let controllers  = {
            
               if(response){
                 return  res.status(200).send(response)
+              }else{
+                return  res.status(200).send({Error:"No hay mesanges"})
+
               }
      
 
