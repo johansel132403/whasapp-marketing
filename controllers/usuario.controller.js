@@ -459,11 +459,11 @@ let controllers  = {
       },
 
 
-      
+
       getLista: function( req, res){
 
   
-        list.find.then((response)=> {
+        list.find().then((response)=> {
           return res.status(200).send({response});
         });
             
