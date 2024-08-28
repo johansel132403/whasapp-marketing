@@ -475,7 +475,7 @@ let controllers  = {
        
         let paramsId = req.params.id;
   
-        Listado.findOneById(paramsId).then((response)=> {
+        Listado.findById(paramsId).then((response)=> {
 
           if(response){
             return res.status(200).send({response});
