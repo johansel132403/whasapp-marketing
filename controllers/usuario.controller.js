@@ -461,9 +461,9 @@ let controllers  = {
 
 
       getLista: function( req, res){
-        let list = new Listado();
+       
   
-        list.find().then((response)=> {
+        Listado.find().then((response)=> {
           return res.status(200).send({response});
         });
             
