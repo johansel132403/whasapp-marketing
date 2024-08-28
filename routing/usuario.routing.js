@@ -26,6 +26,7 @@ let multipartImg = multiparty({uploadDir: "./uploads/user"})
     routing.post('/webhook',controller.receivPosteMessage);
     routing.post('/saveList',controller.saveLista);
     routing.get('/getList',controller.getLista);
+    routing.get('/getonelist/:id',controller.getOneLista)
     routing.post('/sendandsavedmsg',controller.sendAndSavedMessage);
     routing.get('/getchat/:id',controller.getMessage);
     routing.post('/upluadimg',controller.sendImgByChat);

@@ -470,6 +470,24 @@ let controllers  = {
       
       },
 
+      
+      getOneLista: function( req, res){
+       
+        let paramsId = req.params.id;
+  
+        Listado.findOneById(paramsId).then((response)=> {
+
+          if(response){
+            return res.status(200).send({response});
+
+          }else{
+            return res.status(404).send({Error:"No se encontro ninguna lista...."})
+          }
+        });
+            
+      
+      },
+
 
 
 
