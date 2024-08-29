@@ -20,7 +20,7 @@ var fs = require('fs-extra');
 
 
 
-   let token ="EAAEYkh4JKI0BO5N27NOZC5JVqqLKiNDKXjeY900hhIMIZB7swxEttAPErX9aQ8hJSbSQxUEgvHXzb4z10NvDwqRYU042dr8WwEgejTov4wbctfIMNIcIJVlM30mqW1iayFHrwQojy4ZCcEZCZCyXaxY1w2xfHd2j15W1gkXWI7Ba62bKuBTPu3oRzFzZB855P2VQn7l0lw0wDOqolH";
+   let token ="EAAEYkh4JKI0BO9Fjkch8MOCZAWTiVB34s2a7TZAa9ncucnjK1yEZCjSnWkya4b3zEG3gSVRKrAdquGLaimkK9c1MMnyOnqsHUksMaJrCVMZBi93aDIFCtzs1A6aAokXbZARdPfTMxCPJVUrrZADv9hgPHJVfBCYlG3sO1b51ZBUZCv7mo1XUbeZClMieAR1wd32A3sZCux0j98EQJMeUZBKKLYZD";
 let controllers  = {
 
     Home: function(req,res){
@@ -134,6 +134,92 @@ let controllers  = {
            let URL  = 'https://graph.facebook.com/v19.0/154271034446024/message_templates'
             // const body = this.parseBody()
             const response = await axios.post(URL,body, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+            console.log(response)
+
+            return response.data
+        }catch(e){
+            console.log(e)
+            return Promise.resolve(e)
+        }
+
+      },
+
+
+
+
+      sendTemplate: async function(req, res){
+
+        // let body = req.body;
+        try{
+
+          const body =  {
+            "name": "seasonal_promotion02",
+            "language": "en_US",
+            "category": "MARKETING",
+            "components": [
+              {
+                "type": "HEADER",
+                "format": "TEXT",
+                "text": "Our {{1}} is on!",
+                "example": {
+                  "header_text": [
+                    "Summer Sale"
+                  ]
+                }
+              },
+              {
+                "type": "BODY",
+                "text": "Shop now through {{1}} and use code {{2}} to get {{3}} off of all merchandise.",
+                "example": {
+                  "body_text": [
+                    [
+                      "the end of August","25OFF","25%"
+                    ]
+                  ]
+                }
+              },
+              {
+                "type": "FOOTER",
+                "text": "Use the buttons below to manage your marketing subscriptions"
+              },
+              {
+                "type":"BUTTONS",
+                "buttons": [
+                  {
+                    "type": "QUICK_REPLY",
+                    "text": "Unsubscribe from Promos"
+                  },
+                  {
+                    "type":"QUICK_REPLY",
+                    "text": "Unsubscribe from All"
+                  }
+                ]
+              }
+            ]
+          }
+
+                      // Datos de la solicitud para enviar un mensaje de plantilla
+            const data = {
+              messaging_product: 'whatsapp',
+              to: '18093199970',
+              type: 'template',
+              template: {
+                name: 'hello_world',  // Nombre de la plantilla aprobada
+                language: {
+                  code: 'en_US',  // Código de idioma de la plantilla
+                },
+              },
+            };
+
+
+
+           let URL  = 'https://graph.facebook.com/v20.0/208174665722024/messages'
+            // const body = this.parseBody()
+            const response = await axios.post(URL,data, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
@@ -578,7 +664,7 @@ let controllers  = {
               if(response){
                 return  res.status(200).send(response)
               }else{
-                return  res.status(200).send({Error:"No hay mesanges"})
+                return  res.status(200).send({Error:"No hay Mensajes"})
 
               }
      
