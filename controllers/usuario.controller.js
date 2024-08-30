@@ -155,9 +155,9 @@ let controllers  = {
 
          let body = req.body;
 
-        //  console.log(body.nombreTamplate)
-        //  console.log(body.idioma)
-        //  console.log(body.numero)
+         console.log(body.nombreTamplate)
+         console.log(body.idioma)
+         console.log(body.numero)
 
         try{
 
@@ -166,9 +166,9 @@ let controllers  = {
             const data = {
               messaging_product: 'whatsapp',
               to: body.numero,
-              type: body.nombreTamplate,
+              type: 'template',
               template: {
-                name: 'hello_world',  // Nombre de la plantilla aprobada
+                name: body.nombreTamplate,  // Nombre de la plantilla aprobada
                 language: {
                   code: body.idioma,  // Código de idioma de la plantilla
                 },
