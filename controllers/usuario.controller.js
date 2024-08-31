@@ -491,7 +491,7 @@ let controllers  = {
         // }
 
 
-        console.log('bodyyyy',req.body)
+    
     
 
         let d = false
@@ -530,19 +530,20 @@ let controllers  = {
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
-                              type:req.body.type,
                               data:[{
-                                nombre: req.body.data[0].name,
-                                header: req.body.data[0].header,             
+                                type:req.body.Emisor[0].data[0].type,
+                                header: req.body.Emisor[0].data[0].header,             
                                 imagen: "",
-                                body: req.body.data[0].body,
+                                body: req.body.Emisor[0].data[0].body,
                                 timestamp: fechaHoraCompleta,
-                                foote:req.body.data[0].foote,
+                                foote:req.body.Emisor[0].data[0].foote,
                                 bottom:"",
                               }],
                               }]
 
                               
+                            console.log('datos',datos)
+
                             chat.IdChat = req.body.Emisor[0].numero;
                               
                               
