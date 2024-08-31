@@ -186,7 +186,7 @@ let controllers  = {
             });
             console.log(response)
 
-            return response.data
+            return res.status(200).send(response.data) 
         }catch(e){
             console.log(e)
             return Promise.resolve(e)
