@@ -583,7 +583,7 @@ let controllers  = {
 
         console.log(paramsId)
 
-        Chat.findOne({"IdChat": paramsId})
+        Chat.find({"IdChat": paramsId})
             .then((response) =>{
 
               
