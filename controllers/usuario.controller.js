@@ -531,7 +531,7 @@ let controllers  = {
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
                               data:[{
-                                type:req.body.Emisor[0].data[0].type,
+                                type:req.body.Emisor[0].type,
                                 header: req.body.Emisor[0].data[0].header,             
                                 imagen: "",
                                 body: req.body.Emisor[0].data[0].body,
