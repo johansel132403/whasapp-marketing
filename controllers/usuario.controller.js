@@ -530,18 +530,19 @@ let controllers  = {
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
-                              // type:"template",
-                              // data:[{
-                              //   nombre: dt01.data.name,
-                              //   header: dt01.header,             
-                              //   imagen: "",
-                              //   body: dt01.body,
-                              //   timestamp: fechaHoraCompleta,
-                              //   foote:dt01.foote,
-                              //   bottom:"",
-                              // }],
+                              type:req.body.type,
+                              data:[{
+                                nombre: req.body.data[0].name,
+                                header: req.body.data[0].header,             
+                                imagen: "",
+                                body: req.body.data[0].body,
+                                timestamp: fechaHoraCompleta,
+                                foote:req.body.data[0].foote,
+                                bottom:"",
+                              }],
                               }]
 
+                              
                             chat.IdChat = req.body.Emisor[0].numero;
                               
                               
