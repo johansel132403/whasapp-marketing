@@ -18,7 +18,7 @@ let userSchema = Schema({
         timestamp: String,
         imagen: String,
         type:String,
-    }],
+    }]
     // data:[{
     //     nombre: String,
     //     header: String,             
