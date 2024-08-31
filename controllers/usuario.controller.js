@@ -155,9 +155,7 @@ let controllers  = {
 
          let body = req.body;
 
-         console.log(body.nombreTamplate)
-         console.log(body.idioma)
-         console.log(body.numero)
+     
 
         try{
 
@@ -346,15 +344,6 @@ let controllers  = {
                       let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":body}}).exec().then((response)=>{
                         return response;
                         });
-                    //     console.log('confirmcc:', update)
-
-                    //     if(update){
-                    //       console.log('confirm:', update)
-                    //       return res.status(200).send({Mensaje:"Updated !"});
-
-                    //  }
-                   
-
 
                       if(update !== null){
 
@@ -401,55 +390,6 @@ let controllers  = {
                   catch(e){
                       console.log(e);
                   };
-
-                   
-
-
-
-
-                // chat.IdChat = from;
-                // console.log("Idchat:",IdChat)
-                // let nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
-                // console.log("nombre:",nombre)
-                // let  messagesID = req.body.entry[0].changes[0].value.messages[0].id;
-                // console.log("messagesID:",messagesID)
-                // let numero = req.body.entry[0].changes[0].value.messages[0].from;
-                // console.log("numero:",numero)
-                // let msgText = req.body.entry[0].changes[0].value.messages[0].text;
-                // console.log("msgText:",msgText)
-                // let timestamp = req.body.entry[0].changes[0].value.messages[0].timestamp;
-                // console.log("timestamp:",timestamp)
-                // let recptor = req.body.entry[0].changes[0].value.metadata.display_phone_number;
-                // console.log("recptor:",recptor)
-                    
-
-
-
-
-
-                    
-
-
-                              // let io = require('../index');
-
-                              //       io.on('connection',(socket) => {
-                              //       console.log('La conexion ha sido creada con el socket: ' + socket.id)
-
-                              //       console.log('si entro02')
-
-                              //           if(body){
-
-                              //                           let bodyb =     JSON.stringify(req.body)
-
-
-                              //             socket.emit("data",bodyb)
-                              //         }
-                              //       });
-
-
-
-
-
 
                             }else{
                               return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
@@ -541,7 +481,7 @@ let controllers  = {
 
 
 
-      // este metodo tengo que hacerle una mejora porque que pasa si el ID que se esta buscando no aparece..... ojo aqui 
+     
       sendAndSavedMessage: async function( req, res, next){
 
         
@@ -549,6 +489,9 @@ let controllers  = {
         //   // console.log('IdChat',req.body)
 
         // }
+
+
+        console.log('bodyyyy',req.body)
     
 
         let d = false
@@ -561,11 +504,23 @@ let controllers  = {
 
               let chat = new Chat();
 
-              if(req.body.Emisor && req.body.Emisor[0] && req.body.Emisor[0].nombre
-                 && req.body.Emisor[0] && req.body.Emisor[0].messagesID  &&
-                 req.body.Emisor[0].msgText && req.body.Emisor[0].timestamp
+              // if(req.body.Emisor && req.body.Emisor[0] && req.body.Emisor[0].nombre
+              //    && req.body.Emisor[0] && req.body.Emisor[0].messagesID  &&
+              //    req.body.Emisor[0].msgText && req.body.Emisor[0].timestamp
+              // ){
 
-              ){
+              if(req.body.IdChat){
+
+                // type:String,
+                // data:[{
+                //     nombre: String,
+                //     header: String,             
+                //     imagen: String,
+                //     body: String,
+                //     timestamp: String,
+                //     foote:String,
+                //     bottom:String,
+                // }],
 
          
                       try{
@@ -575,6 +530,16 @@ let controllers  = {
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
+                              // type:"template",
+                              // data:[{
+                              //   nombre: dt01.data.name,
+                              //   header: dt01.header,             
+                              //   imagen: "",
+                              //   body: dt01.body,
+                              //   timestamp: fechaHoraCompleta,
+                              //   foote:dt01.foote,
+                              //   bottom:"",
+                              // }],
                               }]
 
                             chat.IdChat = req.body.Emisor[0].numero;
