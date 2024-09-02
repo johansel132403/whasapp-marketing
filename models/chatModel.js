@@ -18,15 +18,15 @@ let userSchema = Schema({
         timestamp: String,
         imagen: String,
         type:String,
-        // data:[{
-        //     nombre: String,
-        //     header: String,             
-        //     imagen: String,               
-        //     body: String,
-        //     timestamp: String,
-        //     foote:String,
-        //     bottom:String,
-        // }],
+        data:[{
+            nombre: String,
+            header: String,             
+            imagen: String,               
+            body: String,
+            timestamp: String,
+            foote:String,
+            bottom:String,
+        }],
     }],
 
 
