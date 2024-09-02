@@ -74,7 +74,7 @@ async function connectToDatabase() {
         for (let user of users ) {
             let updated = false;
 
-            console.log('********* ',user.Emisor)
+            console.log('********* ',user)
   
             // Verifica y añade nuevos campos o modifica los existentes
             user.Emisor.forEach(emisor => {
