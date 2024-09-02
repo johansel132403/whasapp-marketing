@@ -42,8 +42,11 @@ module.exports = mongoose.model('chat',userSchema);
 const UserModel = mongoose.model('chat',userSchema);
 
 async function connectToDatabase() {
+
+    password = encodeURIComponent('odontoarte24@');
+
     try {
-        await mongoose.connect('mongodb://localhost:27017///odontoarte24:odontoarte24@cluster0.tvfjxum.mongodb.net/whatsappmarketing', {
+        await mongoose.connect(`mongodb://localhost:27017///odontoarte24:${password}cluster0.tvfjxum.mongodb.net/whatsappmarketing`, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -74,7 +77,7 @@ async function connectToDatabase() {
         for (let user of users ) {
             let updated = false;
 
-            
+
             if (!Array.isArray(user.Emisor)) {
                 user.Emisor = [];
                 updated = true;
