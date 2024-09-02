@@ -46,7 +46,7 @@ async function connectToDatabase() {
     password = encodeURIComponent('odontoarte24@');
 
     try {
-        await mongoose.connect(`mongodb://localhost:27017/odontoarte24:${password}cluster0.tvfjxum.mongodb.net/whatsappmarketing`, {
+        await mongoose.connect(process.env.DB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
