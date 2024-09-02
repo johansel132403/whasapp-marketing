@@ -518,6 +518,7 @@ let controllers  = {
           
                 let currentDate = `${hora} - ${fechaCompleta}`
 
+                console.log(req.body.Emisor[0])
 
                       try{
                               let datos = [{
@@ -532,7 +533,7 @@ let controllers  = {
                               }]
 
                               
-                            console.log('datos',datos)
+                            console.log('datos', req.body.Emisor[0])
 
                             chat.IdChat = req.body.Emisor[0].numero;
                               
@@ -550,7 +551,7 @@ let controllers  = {
                                     }
                           }
                       catch(e){
-                          console.log(e);
+                          console.log('Este es el error: ',e);
                       };
 
                                 }else{
