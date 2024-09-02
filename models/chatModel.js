@@ -43,7 +43,7 @@ const UserModel = mongoose.model('chat',userSchema);
 
 async function connectToDatabase() {
     try {
-        await mongoose.connect('mongodb://localhost:27017///odontoarte24:odontoarte24@cluster0.tvfjxum.mongodb.net/whatsappmarketing', {
+        await mongoose.connect('mongodb+srv://odontoarte24:odontoarte24@cluster0.tvfjxum.mongodb.net/whatsappmarketing', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
