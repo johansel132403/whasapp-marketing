@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 // Conectarse a la base de datos
-mongoose.connect('mongodb://localhost:27017/'+process.env.DB_URL, {
+mongoose.connect('mongodb://localhost:27017/odontoarte24:odontoarte24@cluster0.tvfjxum.mongodb.net/whatsappmarketing', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
