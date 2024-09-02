@@ -47,9 +47,30 @@ module.exports = mongoose.model('chat',userSchema);
 
 const UserModel = mongoose.model('chat',userSchema);
 
+async function connectToDatabase() {
+    try {
+        await mongoose.connect('mongodb://localhost:27017/tu_base_de_datos', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('Conectado a la base de datos.');
+        return true;
+    } catch (error) {
+        console.error('Error al conectar a la base de datos:', error);
+        return false;
+    }
+}
 
 
  async function migrateData() {
+
+    const connected = await connectToDatabase();
+    if (!connected) {
+        console.error('No se pudo conectar a la base de datos. Abortando la migración.');
+        return;
+    }
+
+
     try {
         // Encuentra todos los documentos que necesitan ser migrados
        
