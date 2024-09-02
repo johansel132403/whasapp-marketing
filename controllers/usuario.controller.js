@@ -519,35 +519,16 @@ let controllers  = {
                 let currentDate = `${hora} - ${fechaCompleta}`
 
 
-
-                // type:String,
-                // data:[{
-                //     nombre: String,
-                //     header: String,             
-                //     imagen: String,
-                //     body: String,
-                //     timestamp: String,
-                //     foote:String,
-                //     bottom:String,
-                // }],
-
-         
                       try{
                               let datos = [{
-                                nombre: req.body.Emisor[0].nombre,
-                                messagesID: req.body.Emisor[0].messagesID,
+                              nombre: req.body.Emisor[0].nombre,
+                              messagesID: req.body.Emisor[0].messagesID,
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
-                              data:[{
-                                type:req.body.Emisor[0].type,
-                                header: req.body.Emisor[0].data[0].header,             
-                                imagen: "",
-                                body: req.body.Emisor[0].data[0].body,
-                                timestamp: currentDate,
-                                foote:req.body.Emisor[0].data[0].foote,
-                                bottom:"",
-                              }],
+                              type:  req.body.Emisor[0].type,
+                              data:req.body.Emisor[0].data,
+
                               }]
 
                               
