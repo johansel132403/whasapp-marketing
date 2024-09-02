@@ -37,6 +37,51 @@ let userSchema = Schema({
 
 module.exports = mongoose.model('chat',userSchema);
 
+
+
+const UserModel = mongoose.model('chat',userSchema);
+
+
+
+ async function migrateData() {
+    try {
+        // Encuentra todos los documentos que necesitan ser migrados
+       
+        const users  = await UserModel.find();
+  
+        // Recorrer cada documento para actualizarlo
+        for (let user of users ) {
+            let updated = false;
+  
+            // Verifica y añade nuevos campos o modifica los existentes
+            user.Emisor.forEach(emisor => {
+                
+                if (!emisor.type) {
+                    emisor.type = '';
+                    updated = true;
+                }
+                
+                if (!emisor.data) {
+                    emisor.data = []; // Añadir un array vacío si no existe
+                    updated = true;
+                }
+            });
+  
+            // Si se ha hecho algún cambio, guarda el documento
+            if (updated) {
+                await user.save();
+                console.log(`Documento con IdChat ${user.IdChat} actualizado.`);
+            }
+        }
+  
+        console.log('Migración completada.');
+    } catch (error) {
+        console.error('Error durante la migración:', error);
+    } finally {
+        mongoose.connection.close(); // Cierra la conexión a la base de datos
+    }
+  }
+  
 // let IdChat = from;
 // console.log("Idchat:",IdChat)
 // let nombre = req.body.entry[0].changes[0].value.contacts[0].profile.name;
@@ -75,7 +120,8 @@ module.exports = mongoose.model('chat',userSchema);
 //                                   "field":"messages"}]}]}
 
 
-
+// Ejecuta la migración
+migrateData();
 
 // IdChat : un id para ambos, que sera el numero del cliente
 // nombre
