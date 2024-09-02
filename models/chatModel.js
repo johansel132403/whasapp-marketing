@@ -73,6 +73,12 @@ async function connectToDatabase() {
         // Recorrer cada documento para actualizarlo
         for (let user of users ) {
             let updated = false;
+
+            
+            if (!Array.isArray(user.Emisor)) {
+                user.Emisor = [];
+                updated = true;
+            }
   
             // Verifica y añade nuevos campos o modifica los existentes
             user.Emisor.forEach(emisor => {
