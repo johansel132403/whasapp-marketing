@@ -518,7 +518,7 @@ let controllers  = {
           
                 let currentDate = `${hora} - ${fechaCompleta}`
 
-                console.log(req.body.Emisor[0])
+                console.log(req.body.Emisor[0].numero)
 
                       try{
                               let datos = [{
