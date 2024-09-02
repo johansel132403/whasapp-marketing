@@ -151,7 +151,7 @@ async function connectToDatabase() {
 
 
 // Ejecuta la migración
-migrateData();
+// migrateData();
 
 // IdChat : un id para ambos, que sera el numero del cliente
 // nombre
