@@ -511,6 +511,15 @@ let controllers  = {
 
               if(req.body.IdChat){
 
+                
+                let date =new Date();
+                let hora =  date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true });
+                let fechaCompleta = date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+          
+                let currentDate = `${hora} - ${fechaCompleta}`
+
+
+
                 // type:String,
                 // data:[{
                 //     nombre: String,
@@ -535,7 +544,7 @@ let controllers  = {
                                 header: req.body.Emisor[0].data[0].header,             
                                 imagen: "",
                                 body: req.body.Emisor[0].data[0].body,
-                                timestamp: fechaHoraCompleta,
+                                timestamp: currentDate,
                                 foote:req.body.Emisor[0].data[0].foote,
                                 bottom:"",
                               }],
