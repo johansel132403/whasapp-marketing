@@ -528,7 +528,7 @@ let controllers  = {
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
                               type:  req.body.Emisor[0].type,
-                              data:req.body.Emisor[0].data,
+                              data:req.body.Emisor[0].data[0],
 
                               }]
 
@@ -538,7 +538,7 @@ let controllers  = {
                             chat.IdChat = req.body.Emisor[0].numero;
                               
                               
-                            let update = await Chat.findOneAndUpdate({"IdChat":req.body.Emisor[0].numero},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                            let update = await Chat.findOneAndUpdate({"IdChat":req.body.Emisor[0].numero},{$push:{"Emisor":datos}},{ new: true, runValidators: true }).exec().then((response)=>{
                               return response;
                               });
 
