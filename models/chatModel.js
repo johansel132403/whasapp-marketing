@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 // Conectarse a la base de datos
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect('mongodb://localhost:27017/'+process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
