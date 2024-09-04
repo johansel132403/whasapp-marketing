@@ -519,6 +519,7 @@ let controllers  = {
                 let currentDate = `${hora} - ${fechaCompleta}`
 
                 console.log(req.body.Emisor[0].numero)
+                console.log('ewwr///',req.body)
                 // console.log('awlalala',req.body.Emisor[0].data)
 
                       try{
