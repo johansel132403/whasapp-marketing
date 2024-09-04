@@ -536,7 +536,7 @@ let controllers  = {
                               
                             console.log('datos', req.body.Emisor[0])
 
-                            chat.IdChat = req.body.Emisor[0].numero;
+                            chat.IdChat = req.body;
                               
                               
                             let update = await Chat.findOneAndUpdate({"IdChat":req.body.Emisor[0].numero},{$push:{"Emisor":datos}},{ new: true, runValidators: true }).exec().then((response)=>{
@@ -548,7 +548,10 @@ let controllers  = {
 
                               }else{
                                                               console.log('esta entrando aqui')               
-                                          let  output = await chat.save();
+                                          let  output = await chat.save(req.body);
+
+                                          
+
                                           return res.status(200).send({Mensaje:"Saved!"});
                                     }
                           }
