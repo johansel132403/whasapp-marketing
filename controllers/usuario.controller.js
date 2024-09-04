@@ -20,7 +20,7 @@ var fs = require('fs-extra');
 
 
 
-   let token ="EAAEYkh4JKI0BO2KeNX49vFOga4NbfhkN424qNI4hS5KoDE930V8tBZCtiII7ogKaQFHW5xgrScYcu84QlbLZBwz5ILmmWjy1kvunJb24BQCb3ljJujGK6ZCA9lEVebnYnE5QDUqZAKzFlRNW9z7mWxG98NT20ZBo9FBZBvZC5Nx2EQ7Om0fP2oYQzS9Wb1xYjaz3FZAeyEfrZBd8SwaRI2sgZD";
+   let token ="EAAEYkh4JKI0BOZCim6umBaZCfhxsugqZCxVI2d8pwkZAPf6hTtsWYifzEI8oSAoNx6PeNrZAIH2ZAgcf5ocOeB5UsuiFCf4YjFeyiP9gQog3hV8THO8hOyiQbhttqcbvaXlJRL4TBftDXtUPReXVXm5ZAe1phtxZCe6WSvSUAVJTuKyTidoI89b5zRR0Ty7PcaGBcFtvPf5ZCZBONeM75Se9MZD";
 let controllers  = {
 
     Home: function(req,res){
@@ -519,6 +519,7 @@ let controllers  = {
                 let currentDate = `${hora} - ${fechaCompleta}`
 
                 console.log(req.body.Emisor[0].numero)
+                console.log('awlalala',req.body.Emisor[0].data)
 
                       try{
                               let datos = [{
