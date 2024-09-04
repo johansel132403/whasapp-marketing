@@ -502,7 +502,7 @@ let controllers  = {
               // let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
               // let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
 
-              let chat = new Chat();
+              let chat = new Chat(req.body);
 
               // if(req.body.Emisor && req.body.Emisor[0] && req.body.Emisor[0].nombre
               //    && req.body.Emisor[0] && req.body.Emisor[0].messagesID  &&
@@ -549,8 +549,9 @@ let controllers  = {
 
                               }else{
                                                               console.log('esta entrando aqui')     
-                                                              chat = req.body;          
-                                          let  output = await chat.save();
+                                              let chatt = new Chat(req.body);
+                                                                     
+                                          let  output = await chatt.save();
 
                                           
 
