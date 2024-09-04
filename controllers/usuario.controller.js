@@ -519,7 +519,7 @@ let controllers  = {
                 let currentDate = `${hora} - ${fechaCompleta}`
 
                 console.log(req.body.Emisor[0].numero)
-                console.log('awlalala',req.body.Emisor[0].data)
+                // console.log('awlalala',req.body.Emisor[0].data)
 
                       try{
                               let datos = [{
@@ -528,7 +528,7 @@ let controllers  = {
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
-                              type:  req.body.Emisor[0].type,
+                              // type:  req.body.Emisor[0].type,
                               // data:req.body.Emisor[0].data[0],
 
                               }]
