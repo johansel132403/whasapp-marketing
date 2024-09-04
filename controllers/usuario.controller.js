@@ -548,8 +548,9 @@ let controllers  = {
                                       return res.status(200).send({Mensaje:"Updated !"});
 
                               }else{
-                                                              console.log('esta entrando aqui')               
-                                          let  output = await chat.save(req.body);
+                                                              console.log('esta entrando aqui')     
+                                                              chat = req.body;          
+                                          let  output = await chat.save();
 
                                           
 
