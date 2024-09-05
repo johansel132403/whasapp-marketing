@@ -17,16 +17,16 @@ let userSchema = Schema({
         msgText: String,
         timestamp: String,
         imagen: String,
-        tipo:String
-        // data:[{
-        //     nombre: String,
-        //     header: String,             
-        //     imagen: String,               
-        //     body: String,
-        //     timestamp: String,
-        //     foote:String,
-        //     bottom:String,
-        // }],
+        tipo:String,
+        datos:[{
+            nombre: String,
+            header: String,             
+            imagen: String,               
+            body: String,
+            timestamp: String,
+            foote:String,
+            bottom:String,
+        }]
     }],
 
 
