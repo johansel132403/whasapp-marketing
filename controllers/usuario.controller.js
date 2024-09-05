@@ -20,7 +20,7 @@ var fs = require('fs-extra');
 
 
 
-   let token ="EAAEYkh4JKI0BOZCim6umBaZCfhxsugqZCxVI2d8pwkZAPf6hTtsWYifzEI8oSAoNx6PeNrZAIH2ZAgcf5ocOeB5UsuiFCf4YjFeyiP9gQog3hV8THO8hOyiQbhttqcbvaXlJRL4TBftDXtUPReXVXm5ZAe1phtxZCe6WSvSUAVJTuKyTidoI89b5zRR0Ty7PcaGBcFtvPf5ZCZBONeM75Se9MZD";
+   let token ="EAAEYkh4JKI0BOzWWUUyCvNB3k61k7i2uQZBsqjc0uYV14XlucZAD26JnZBBFcoJaM2oKhNEa5t7kKQcUUR84ZBVXqputfCjXG20UQvNTjuoNLxjM2RPqE5NipqGIZCDabNMFVsKHZAZBxQCrHGQodTfe1jc3E4OhO9jjbfeboDZCVnFdWZCXXK9vhP0PQy4Mb3T5JcC5Od81qV6xXMuBbo2EZD";
 let controllers  = {
 
     Home: function(req,res){
@@ -550,7 +550,7 @@ let controllers  = {
                               }else{
                                                               console.log('esta entrando aqui')     
                                               let chatt = new Chat(req.body);
-                                                                     
+                                                               
                                           let  output = await chatt.save();
 
                                           
