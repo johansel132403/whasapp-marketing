@@ -520,6 +520,7 @@ let controllers  = {
 
                 console.log(req.body.Emisor[0].numero)
                 console.log('ewwr///',req.body)
+                console.log('datos///',req.body.Emisor[0].datos)
                 // console.log('awlalala',req.body.Emisor[0].data)
 
                       try{
