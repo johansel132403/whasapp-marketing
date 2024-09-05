@@ -530,15 +530,7 @@ let controllers  = {
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
                               tipo:  req.body.Emisor[0].tipo,
-                              datos:[{
-                                nombre: "p",
-                                header: "p",             
-                                imagen: "p",               
-                                body: "p",
-                                timestamp: "p",
-                                foote:"p",
-                                bottom:"p",
-                            }]
+                              datos:req.body.Emisor[0].datos
                            
 
                               }]
