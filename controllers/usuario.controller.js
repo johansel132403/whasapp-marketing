@@ -529,8 +529,8 @@ let controllers  = {
                               numero:  req.body.Emisor[0].numero,
                               msgText:  req.body.Emisor[0].msgText,
                               timestamp: req.body.Emisor[0].timestamp,
-                              // type:  req.body.Emisor[0].type,
-                              // data:req.body.Emisor[0].data[0],
+                              type:  req.body.Emisor[0].type,
+                              data:req.body.Emisor[0].data[0],
 
                               }]
 
