@@ -317,6 +317,7 @@ let controllers  = {
                           const mediaId = message.image.id;
                           console.log('mediaId', message.image)
                           const imageUrl = await controllers.getImageUrl(mediaId);
+                          console.log(imageUrl)
                           if (imageUrl) {
                               imageUrls.push(imageUrl);
                               
