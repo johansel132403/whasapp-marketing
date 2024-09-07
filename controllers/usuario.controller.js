@@ -453,7 +453,9 @@ let controllers  = {
            getImageUrl: async function(mediaId) {
           try {
               const response = await axios.get(`https://graph.facebook.com/v20.0/${mediaId}`, {
-                  params: { access_token: `Bearer ${token}`}
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
               });
               return response.data.url;
           } catch (error) {
