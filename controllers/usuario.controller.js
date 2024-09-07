@@ -315,7 +315,7 @@ let controllers  = {
                   for (const message of messages) {
                       if (message.type === 'image') {
                           const mediaId = message.image.id;
-                          const imageUrl = await this.getImageUrl(mediaId);
+                          const imageUrl = await getImageUrl(mediaId);
                           if (imageUrl) {
                               imageUrls.push(imageUrl);
                               console.log(`Imagen recibida: ${imageUrl}`);
@@ -450,7 +450,7 @@ let controllers  = {
 
 
          // Función para obtener la URL de la imagen usando el ID del archivo
-         async  getImageUrl(mediaId) {
+           getImageUrl: async function(mediaId) {
           try {
               const response = await axios.get(`${WHATSAPP_API_URL}/${mediaId}`, {
                   params: { access_token: token }
