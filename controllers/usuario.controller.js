@@ -309,6 +309,7 @@ let controllers  = {
 
                   console.log('body',req.body.entry[0].changes[0])
                   const messages = req.body.entry[0].changes[0].value.messages;
+                  const contacts = req.body.entry[0].changes[0].value.contacts;
                   console.log('messages',messages)
                   console.log('contacts',contacts)
 
