@@ -307,19 +307,26 @@ let controllers  = {
             
                   let currentDate = `${hora} - ${fechaCompleta}`
 
-                  console.log('body',req.body.entry[0].changes[0])
-                  const messages = req.body.entry[0].changes[0].value.messages;
-                  const contacts = req.body.entry[0].changes[0].value.contacts;
-                  console.log('messages',messages)
-                  console.log('contacts',contacts)
 
-                  messages.forEach(message => {
+
+
+                  const messages = req.body.entry[0].changes[0].value.messages;
+                  let imageUrls = [];
+                  for (const message of messages) {
                       if (message.type === 'image') {
-                          const imageUrl = message.image.url;
-                          console.log(`Imagen recibida: ${imageUrl}`);
-                          // Aquí puedes guardar la URL de la imagen en una base de datos o en memoria
+                          const mediaId = message.image.id;
+                          const imageUrl = await getImageUrl(mediaId);
+                          if (imageUrl) {
+                              imageUrls.push(imageUrl);
+                              console.log(`Imagen recibida: ${imageUrl}`);
+                          }
                       }
-                  });
+                  }
+
+
+
+
+
 
                 try{
                   let body = [{
@@ -437,6 +444,22 @@ let controllers  = {
 
       }
       return next()
+      },
+
+
+
+
+         // Función para obtener la URL de la imagen usando el ID del archivo
+         async  getImageUrl(mediaId) {
+          try {
+              const response = await axios.get(`${WHATSAPP_API_URL}/${mediaId}`, {
+                  params: { access_token: token }
+              });
+              return response.data.url;
+          } catch (error) {
+              console.error('Error obteniendo la URL de la imagen:', error);
+              return null;
+          }
       },
 
 
