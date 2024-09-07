@@ -307,7 +307,7 @@ let controllers  = {
             
                   let currentDate = `${hora} - ${fechaCompleta}`
 
-                  console.log('body',req.body)
+                  console.log('body',req.body.entry[0].changes[0])
 
                 try{
                   let body = [{
