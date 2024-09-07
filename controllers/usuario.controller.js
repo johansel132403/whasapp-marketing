@@ -318,7 +318,8 @@ let controllers  = {
                           console.log('mediaId', message.image)
                           const imageUrl = await controllers.getImageUrl(mediaId);
                          let d = controllers.downloadAndSaveMedia(token,mediaId)
-                         console.log('dfdfdffdfdfdf',d)
+                         d.then((filePath) => console.log(`Media downloaded and saved at: ${filePath}`))
+                         console.log('dfdfdffdfdfdf',filePath)
                           console.log(imageUrl)
                           if (imageUrl) {
                               imageUrls.push(imageUrl);
