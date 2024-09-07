@@ -315,7 +315,7 @@ let controllers  = {
                   for (const message of messages) {
                       if (message.type === 'image') {
                           const mediaId = message.image.id;
-                          console.log('mediaId', mediaId)
+                          console.log('mediaId', message.image)
                           const imageUrl = await controllers.getImageUrl(mediaId);
                           if (imageUrl) {
                               imageUrls.push(imageUrl);
