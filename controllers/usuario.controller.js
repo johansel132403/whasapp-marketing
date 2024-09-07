@@ -457,7 +457,7 @@ let controllers  = {
                   Authorization: `Bearer ${token}`,
                 },
               });
-              return response.data.url;
+              return response.data;
           } catch (error) {
               console.error('Error obteniendo la URL de la imagen:', error);
               return null;
