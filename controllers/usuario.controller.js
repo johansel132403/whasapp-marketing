@@ -319,103 +319,106 @@ let controllers  = {
                           const imageUrl = await controllers.getImageUrl(mediaId);
                           if (imageUrl) {
                               imageUrls.push(imageUrl);
+                              
+                                                if(!imageUrl){
+                              
+                                                  
+                                                  
+                                                                  try{
+                                                                    let body = [{
+                                                                      nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                                                                      messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                                                                     numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                                                                      msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                                                                     
+                                                                    //  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                                                  
+                                                                      // timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true })
+                                                                      timestamp: currentDate
+                                                                
+                                                                    }]
+                                                  
+                                                                   chat.IdChat = from;
+                                                                    chat.Emisor = body;
+                                                  
+                                                                    // const from = req.body;
+                                                                    let idd= "";
+                                                  
+                                                                    const io = require('../index');
+                                                  
+                                                                    console.log('si entro03')
+                                                                                   
+                                                                                      io.emit('newMessage', { from, body });  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                                        // let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
+                                                                        //               return response;
+                                                                        // });
+                                                  
+                                                                        let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":body}}).exec().then((response)=>{
+                                                                          return response;
+                                                                          });
+                                                  
+                                                                        if(update !== null){
+                                                  
+                                                                        //   let datos = [{
+                                                                        //     Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                                                                        //     messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                                                                        //    numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                                                                        //    msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                                                                        //    timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                                                                        //   }]
+                                                  
+                                                                        //  chat.IdChat = from;
+                                                                        //   chat.Emisor = datos
+                                                                       
+                                                                        //  let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
+                                                                        //               return response;
+                                                                        //    });
+                                                  
+                                                                          //  if(update){
+                                                                          //       return res.status(200).send({Mensaje:"Updated !"});
+                                                  
+                                                                          //  }
+                                                                                return res.status(200).send({Mensaje:"Updated !"});
+                                                                         
+                                                  
+                                                                        }else{
+                                                  
+                                                                                    // let datos = [{
+                                                                                    // Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
+                                                                                    // messagesID: req.body.entry[0].changes[0].value.messages[0].id,
+                                                                                    // numero:  req.body.entry[0].changes[0].value.messages[0].from,
+                                                                                    // msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
+                                                                                    // timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
+                                                                                    // }]
+                                                  
+                                                                                    // chat.IdChat = from;
+                                                                                    // chat.Emisor = datos
+                                                                                
+                                                                                  
+                                                                                    let  output = await chat.save();
+                                                                                    return res.status(200).send({Mensaje:"Saved!"});
+                                                                              }
+                                                                        }
+                                                                    catch(e){
+                                                                        console.log(e);
+                                                                    };
+                                                  
+                                                                              }else{
+                                                                                return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
+                                                                              }
+                              
+                                                }  
                               console.log(`Imagen recibida: ${imageUrl}`);
                           }
                       }
                   }
 
 
-
-
-
-
-                try{
-                  let body = [{
-                    nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
-                    messagesID: req.body.entry[0].changes[0].value.messages[0].id,
-                   numero:  req.body.entry[0].changes[0].value.messages[0].from,
-                    msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-		             	
-                  //  timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
-
-                    // timestamp: date.toLocaleString('en-US', {timeZone:"America/Santo_Domingo", hour: 'numeric',minute: 'numeric', hour12: true })
-                    timestamp: currentDate
-              
-                  }]
-
-                 chat.IdChat = from;
-                  chat.Emisor = body;
-
-                  // const from = req.body;
-                  let idd= "";
-
-                  const io = require('../index');
-
-                  console.log('si entro03')
-                                 
-                                    io.emit('newMessage', { from, body });  
-
-
-
-
-                      // let chats = await Chat.find({"IdChat":req.body.entry[0].changes[0].value.messages[0].from}).exec().then((response)=>{
-                      //               return response;
-                      // });
-
-                      let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":body}}).exec().then((response)=>{
-                        return response;
-                        });
-
-                      if(update !== null){
-
-                      //   let datos = [{
-                      //     Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
-                      //     messagesID: req.body.entry[0].changes[0].value.messages[0].id,
-                      //    numero:  req.body.entry[0].changes[0].value.messages[0].from,
-                      //    msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-                      //    timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
-                      //   }]
-
-                      //  chat.IdChat = from;
-                      //   chat.Emisor = datos
-                     
-                      //  let update = await Chat.findOneAndUpdate({"IdChat":req.body.entry[0].changes[0].value.messages[0].from},{$push:{"Emisor":datos}}).exec().then((response)=>{
-                      //               return response;
-                      //    });
-
-                        //  if(update){
-                        //       return res.status(200).send({Mensaje:"Updated !"});
-
-                        //  }
-                              return res.status(200).send({Mensaje:"Updated !"});
-                       
-
-                      }else{
-
-                                  // let datos = [{
-                                  // Nombre: req.body.entry[0].changes[0].value.contacts[0].profile.name,
-                                  // messagesID: req.body.entry[0].changes[0].value.messages[0].id,
-                                  // numero:  req.body.entry[0].changes[0].value.messages[0].from,
-                                  // msgText:  req.body.entry[0].changes[0].value.messages[0].text.body,
-                                  // timestamp: req.body.entry[0].changes[0].value.messages[0].timestamp,
-                                  // }]
-
-                                  // chat.IdChat = from;
-                                  // chat.Emisor = datos
-                              
-                                
-                                  let  output = await chat.save();
-                                  return res.status(200).send({Mensaje:"Saved!"});
-                            }
-                      }
-                  catch(e){
-                      console.log(e);
-                  };
-
-                            }else{
-                              return  res.status( 400 ).send( { Error: "Hay campos que estas vacios " } );
-                            }
-
+                  
 
                               // res.status(200).send(
                               //     JSON.stringify(req.body)
