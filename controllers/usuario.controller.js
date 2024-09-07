@@ -452,36 +452,7 @@ let controllers  = {
       },
 
 
-       downloadAndSaveMedia: async function(token, mediaId) {
-        try {
-            const url = `https://graph.facebook.com/v19.0/${mediaId}/`;
-            // Retrieving URL 
-            const getUrl = await axios(url, {
-                headers: {
-                    Authorization: "Bearer " + token
-                }
-            });
-    
-            const config = {
-                method: 'GET',
-                url: getUrl?.data?.url, // Pass the URL received from media ID
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-                responseType: 'arraybuffer'
-            };
-    
-            const response = await axios(config);
-            const ext = response.headers['content-type'].split("/")[1];
-    
-            const randomSt = randomstring.generate();
-            const savingPath = `${__dirname}/../client/public/meta-media/${randomSt}`;
-            fs.writeFileSync(`${savingPath}.${ext}`, response.data);
-            return `${randomSt}.${ext}`;
-        } catch (error) {
-            console.error('Error downloading media:', error);
-        }
-    },
+  
 
       
          // Función para obtener la URL de la imagen usando el ID del archivo
