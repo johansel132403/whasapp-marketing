@@ -317,7 +317,37 @@ let controllers  = {
                           const mediaId = message.image.id;
                           console.log('mediaId', message.image)
                           const imageUrl = await controllers.getImageUrl(mediaId);
-                         let d = controllers.downloadAndSaveMedia(token,mediaId)
+                         
+
+
+
+
+                         const url = `https://graph.facebook.com/v19.0/${mediaId}/`;
+                         // Retrieving URL 
+                         const getUrl = await axios(url, {
+                             headers: {
+                                 Authorization: "Bearer " + token
+                             }
+                         });
+                 
+                         const config = {
+                             method: 'GET',
+                             url: getUrl?.data?.url, // Pass the URL received from media ID
+                             headers: {
+                                 'Authorization': `Bearer ${token}`
+                             },
+                             responseType: 'arraybuffer'
+                         };
+                 
+                         const response = await axios(config);
+
+                         console.log('holi',response)
+
+
+
+
+
+
                          d.then((filePath) => console.log(`Media downloaded and saved at: ${filePath}`))
                          console.log('dfdfdffdfdfdf',filePath)
                           console.log(imageUrl)
