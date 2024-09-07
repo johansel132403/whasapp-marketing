@@ -310,6 +310,7 @@ let controllers  = {
                   console.log('body',req.body.entry[0].changes[0])
                   const messages = req.body.entry[0].changes[0].value.messages;
                   console.log('messages',messages)
+                  console.log('contacts',contacts)
 
                   messages.forEach(message => {
                       if (message.type === 'image') {
