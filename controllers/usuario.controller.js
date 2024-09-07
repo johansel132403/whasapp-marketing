@@ -308,6 +308,15 @@ let controllers  = {
                   let currentDate = `${hora} - ${fechaCompleta}`
 
                   console.log('body',req.body.entry[0].changes[0])
+                  const messages = req.body.entry[0].changes[0].value.messages;
+
+                  messages.forEach(message => {
+                      if (message.type === 'image') {
+                          const imageUrl = message.image.url;
+                          console.log(`Imagen recibida: ${imageUrl}`);
+                          // Aquí puedes guardar la URL de la imagen en una base de datos o en memoria
+                      }
+                  });
 
                 try{
                   let body = [{
